@@ -1,0 +1,1157 @@
+/* -----------------------------------------------------------------------------
+
+	TABLE OF CONTENTS
+
+	1. General
+	2. Components
+	3. Header
+	4. Core
+	5. Sidebar
+	6. Footer
+	7. Elements
+	8. Responsive
+
+----------------------------------------------------------------------------- */
+
+/* -----------------------------------------------------------------------------
+
+    1. GENERAL
+
+----------------------------------------------------------------------------- */
+
+	/* -------------------------------------------------------------------------
+		COLORS
+	-------------------------------------------------------------------------- */
+
+	// Accent
+	$accent1: #4935C5; // primary accent color
+	$accent2: #FA6D4B; // secondary accent color
+
+	// General
+	$body-bg: #FFF;
+	$body-font: #68676D;
+	$body-link: #553DEB;
+
+	// Gray
+	$x-soft-gray: #f4f3f6;
+	$soft-gray: #E9E9EA;
+	$gray: #79787F;
+	$dark-gray: #14161C;
+
+	// Components
+	$alert-info: #5E64DB;
+	$alert-success: #4DB092;
+	$alert-warning: #E67169;
+
+	// Footer
+	$footer-bg: #14161C;
+	$footer-font: #FFF;
+
+	/* -------------------------------------------------------------------------
+		MIXINS
+	-------------------------------------------------------------------------- */
+
+	// Input placeholder
+	@mixin input-placeholder( $color ) {
+		&::-webkit-input-placeholder { color: $color; }
+		&:-moz-placeholder { color: $color; }
+		&::-moz-placeholder { color: $color; }
+		&:-ms-input-placeholder { color: $color; }
+	}
+
+	// Link decor
+	@mixin link-decor ( $init : 0, $hover : 1px, $active : 1px, $color : $accent1, $color-hover : $color, $color-active : rgba( $color, 0.5 ) ) {
+		@if $init == 0 {
+			box-shadow: 0 $hover 0 0 transparent; // Transition fix
+		}
+		@else {
+			box-shadow: 0 $init 0 0 $color;
+		}
+		&:hover { box-shadow: 0 $hover 0 0 $color-hover; }
+		&:active { box-shadow: 0 $active 0 0 $color-active; }
+	}
+	@mixin link-decor-none {
+		box-shadow: none;
+		&:hover { box-shadow: none; }
+		&:active { box-shadow: none; }
+	}
+
+	/* -------------------------------------------------------------------------
+        TYPOGRAPHY
+	------------------------------------------------------------------------- */
+
+	body { color: $body-font; background-color: $body-bg; }
+	a { color: $accent1; }
+	abbr { border-color: $body-font; }
+	button { color: $body-font; }
+	code { border-color: $soft-gray; }
+	pre { border-color: $soft-gray; }
+
+	// Headings
+	h1, h2, h3, h4, h5, h6 { color: $dark-gray; }
+
+	// Definition list
+	dt { color: $dark-gray; }
+
+	/* -------------------------------------------------------------------------
+		FORMS
+	------------------------------------------------------------------------- */
+
+	label { color: $dark-gray; }
+	input, select, textarea { color: $dark-gray; border-color: $soft-gray;
+		@include input-placeholder( rgba( $dark-gray, 0.8 ) );
+	}
+
+	/* -------------------------------------------------------------------------
+		ACCESSIBILITY
+	------------------------------------------------------------------------- */
+
+	body.lsvr-using-keyboard *:focus,
+	body.lsvr-using-keyboard *:active { outline-color: #FF0000; }
+
+
+/* -----------------------------------------------------------------------------
+
+	2. COMPONENTS
+
+----------------------------------------------------------------------------- */
+
+	/* -------------------------------------------------------------------------
+		SEARCH FORM
+	------------------------------------------------------------------------- */
+
+	.lsvr-search-form__submit { color: $dark-gray; }
+	.lsvr-search-form__submit:hover { color: $accent1; }
+	.lsvr-search-form__submit:active { color: rgba( $accent1, 0.8 ); }
+
+
+/* -----------------------------------------------------------------------------
+
+	3. HEADER
+
+----------------------------------------------------------------------------- */
+
+#header { background-color: #FFF; border-color: $soft-gray; }
+
+	/* -------------------------------------------------------------------------
+        HEADER TOPBAR
+    ------------------------------------------------------------------------- */
+
+	.header__topbar { color: #FFF; background-color: $accent1;
+		background-image: linear-gradient( to right, $accent1, $accent2 ); }
+
+	// Languages
+	.header-menu-languages:before { background-color: rgba( #FFF, 0.2 ); }
+	.header-menu-languages__item-link { color: rgba( #FFF, 0.7 ); }
+	.header-menu-languages__item-link:hover { color: #FFF; }
+	.header-menu-languages__item-link:active { color: rgba( #FFF, 0.8 ); }
+	.header-menu-languages__item--active .header-menu-languages__item-link { color: #FFF; }
+
+	// Search toggle
+	.header-search-toggle:before { background-color: rgba( #FFF, 0.2 ); }
+	.header-search-toggle__button { color: #FFF; }
+	.header-search-toggle__button:active { color: rgba( #FFF, 0.8 ); }
+
+	// Social links
+	.header-social__item-link { color: rgba( #FFF, 0.7 ); }
+	.header-social__item-link:hover { color: rgba( #FFF, 1 ); }
+	.header-social__item-link:active { color: rgba( #FFF, 0.8 ); }
+
+	// Secondary menu
+	.header-menu-secondary__item-link { @include link-decor( 0, 1px, 1px, #FFF ); color: #FFF; }
+	.header-menu-secondary__item-icon { color: rgba( #FFF, 0.5 ); }
+
+	/* -------------------------------------------------------------------------
+        HEADER SEARCH
+    ------------------------------------------------------------------------- */
+
+    .header-search { background-color: $x-soft-gray; }
+    .header-search__submit { color: $dark-gray; }
+    .header-search__submit:hover { color: $accent1; }
+    .header-search__submit:active { color: rgba( $accent1, 0.8 ); }
+    .header-search__filter-label--active { color: #FFF; background-color: $accent1; border-color: $accent1; }
+    .header-search__filter-label { border-color: rgba( #000, 0.1 ); }
+    .header-search__filter-label:hover { border-color: rgba( $accent1, 0.5 ); }
+    .header-search__filter-label:active { border-color: rgba( $accent1, 0.4 ); }
+    .header-search__close-button { color: rgba( #000, 0.3 ); }
+    .header-search__close-button:hover { color: rgba( #000, 0.5 ); }
+    .header-search__close-button:active { color: rgba( #000, 0.4 ); }
+
+	/* -------------------------------------------------------------------------
+        HEADER NAVBAR
+    ------------------------------------------------------------------------- */
+
+    .header__navbar { background-color: #FFF; }
+
+	// Branding
+	.header-tagline__link { color: $dark-gray; }
+
+	// Header menu primary
+	@media ( min-width: 992px ) {
+
+		.header-menu-primary__item-link { color: $dark-gray; }
+
+		// Level 1
+		.header-menu-primary__item-link--level-1:hover { color: $accent1; }
+		.header-menu-primary__item-link--level-1:active { color: rgba( $accent1, 0.85 ); }
+		.header-menu-primary__item-link-icon { color: $dark-gray; }
+		.header-menu-primary__item-link-indicator:before { border-bottom-color: #FFF; }
+		.header-menu-primary__item-link-indicator:after { border-bottom-color: rgba( #000, 0.1 ); }
+
+		// Dropdown menu
+		.header-menu-primary__item--dropdown {
+
+			// Level 2 + 3
+			.header-menu-primary__submenu--level-2,
+			.header-menu-primary__submenu--level-3 { background-color: #FFF; box-shadow: 0 1px 3px 0 rgba( #000, 0.1 ); }
+
+			// Level 2+
+			.header-menu-primary__item--hover > .header-menu-primary__item-link,
+			.header-menu-primary__submenu--level-2 .header-menu-primary__item-link:hover { color: $accent1; background-color: rgba( $accent1, 0.07 ); }
+			.header-menu-primary__submenu--level-2 .header-menu-primary__item-link:active { background-color: rgba( $accent1, 0.09 ); }
+
+		}
+
+		// Mega menu
+		.header-menu-primary__item--megamenu {
+
+			.header-menu-primary__submenu-wrapper-inner--level-2 { background-color: #FFF; box-shadow: 0 1px 3px 0 rgba( #000, 0.1 ); border-color: rgba( $soft-gray, 0.5 ); }
+
+			// Level 2
+			.header-menu-primary__submenu-wrapper-inner2--level-2:before,
+			.header-menu-primary__submenu-wrapper-inner2--level-2:after,
+			.header-menu-primary__submenu-wrapper-inner3--level-2:before { background-color: $soft-gray; }
+
+			// Level 2+
+			.header-menu-primary__submenu--level-2 .header-menu-primary__item-link:hover { color: $accent1; }
+			.header-menu-primary__submenu--level-2 .header-menu-primary__item-link:active { color: rgba( $accent1, 0.85 ); }
+
+		}
+
+	}
+
+/* -----------------------------------------------------------------------------
+
+	4. CORE
+
+----------------------------------------------------------------------------- */
+
+.core__columns-col--sidebar { background-color: $x-soft-gray; }
+
+	/* -------------------------------------------------------------------------
+		MAIN HEADER
+	------------------------------------------------------------------------- */
+
+	// Breadcrumbs
+	.breadcrumbs__inner { color: $dark-gray; background-color: $x-soft-gray; }
+	.breadcrumbs__link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+
+	// Meta
+	.main-header {
+		.post-meta__item:after { background-color: $body-font; }
+		.post-meta__item-link,
+		.post-meta .post__term-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+	}
+
+	/* -------------------------------------------------------------------------
+		POST COMMON COMPONENTS
+	------------------------------------------------------------------------- */
+
+	// Post archive categories
+	.post-archive-categories__icon { color: $dark-gray; }
+	.post-archive-categories__item-link { @include link-decor( 0, 2px, 2px, $dark-gray ); color: $dark-gray; }
+	.post-archive-categories__item-link--active { color: $accent1; box-shadow: 0 2px 0 0 $accent1; }
+
+	// Post tags
+	.post-tags__list { color: $gray; }
+	.post-tags .post__term-link { @include link-decor( 0, 1px, 1px, $dark-gray );  color: $dark-gray; }
+
+	// Post author bio
+	.post-author { border-color: $soft-gray; }
+	.post-author__header:after { background-color: #accent2; background-image: linear-gradient( to right, $accent1, $accent2 ); }
+	.post-author__name { background-color: #FFF; }
+	.post-author__more-link:hover .post-author__more-link-label { box-shadow: 0 1px 0 0 $accent1; }
+	.post-author__more-link:active .post-author__more-link-label { box-shadow: 0 1px 0 0 rgba( $accent1, 0.5 ); }
+
+	// Post navigation
+	.post-navigation { background-color: $x-soft-gray; }
+	.post-navigation:after { background-color: rgba( #000, 0.04 ); }
+	.post-navigation__item-link:hover .post-navigation__item-link-title { box-shadow: 0 1px 0 0 $accent1; }
+	.post-navigation__item-link:active .post-navigation__item-link-title { box-shadow: 0 1px 0 0 rgba( $accent1, 0.5 ); }
+	.post-navigation__item-link-label { color: $gray; }
+
+	// Pagination
+	.post-pagination { background-color: $x-soft-gray; }
+	.post-pagination__item--number .post-pagination__item-link { color: $dark-gray; }
+	.post-pagination__item--number .post-pagination__item-link:hover { border-color: rgba( $accent1, 0.5 ); }
+	.post-pagination__item--number .post-pagination__item-link:active { border-color: rgba( $accent1, 0.3 ); }
+	.post-pagination__item--active .post-pagination__item-link { border-color: $accent1; }
+	.post-pagination__item--prev .post-pagination__item-link { color: $dark-gray; }
+	.post-pagination__item--next .post-pagination__item-link { color: $dark-gray; }
+	.post-pagination__item-link:before,
+	.post-pagination__item-link:before { color: $accent1; }
+
+	/* -------------------------------------------------------------------------
+		GENERAL POST ARCHIVE
+	------------------------------------------------------------------------- */
+
+	.general-post-archive {
+		.post { border-color: $soft-gray; }
+		.post__title-link { @include link-decor; }
+		.post__type { color: $gray; }
+	}
+
+	/* -------------------------------------------------------------------------
+		GENERAL ARCHIVE LAYOUTS
+	------------------------------------------------------------------------- */
+
+	// List archive layout
+	.post-archive--list {
+
+		// Categories
+		.post__categories .post__term-link { @include link-decor( 0, 1px, 1px, $body-font ); color: $body-font; }
+
+		// Title
+		.post__title-link { @include link-decor( 0, 2px, 2px, $dark-gray ); color: $dark-gray; }
+		.sticky .post__title:before { color: $accent2; }
+
+		// Meta
+		.post-meta { color: $gray; }
+		.post-meta__item:after { background-color: $gray; }
+		.post-meta__item-link,
+		.post-meta .post__term-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+
+		// Permalink
+		.post-permalink__link:hover .post-permalink__link-label { box-shadow: 0 1px 0 0 $accent1; }
+		.post-permalink__link:active .post-permalink__link-label { box-shadow: 0 1px 0 0 rgba( $accent1, 0.5 ); }
+
+	}
+
+	// Grid archive layout
+	.post-archive--grid {
+
+		// Dark style
+		&.post-archive--layout-style-dark {
+
+			// Container
+			.post__container { color: #FFF; background-color: $dark-gray; }
+
+			// Categories
+			.post__categories { color: $gray; }
+			.post__term-link { @include link-decor( 0, 1px, 1px, rgba( #FFF, 0.8 ) ); color: rgba( #FFF, 0.8 ); }
+
+			// Title
+			.post__title-link { @include link-decor( 0, 1px, 1px, #FFF ); color: #FFF; }
+			.sticky .post__title:before { color: $accent2; }
+
+			// Meta
+			.post-meta { color: rgba( #FFF, 0.8 ); }
+			.post-meta__item:after { background-color: $gray; }
+			.post-meta__item-link { @include link-decor( 0, 1px, 1px, #FFF ); color: #FFF; }
+
+			// Content
+			.post__content { color: rgba( #FFF, 0.8 ); }
+
+			// Permalink
+			.post-permalink__link { color: $accent2; }
+			.post-permalink__link:hover .post-permalink__link-label { box-shadow: 0 1px 0 0 $accent2; }
+			.post-permalink__link:active .post-permalink__link-label { box-shadow: 0 1px 0 0 rgba( $accent2, 0.5 ); }
+
+		}
+
+	}
+
+	/* -------------------------------------------------------------------------
+		DIRECTORY
+	------------------------------------------------------------------------- */
+
+	// Single
+	.lsvr_listing-post-single {
+
+		// Contact info
+		.post-contact__list { border-color: $soft-gray; }
+		.post-contact__item > a { @include link-decor; }
+		.post-contact__item-icon { color: $gray; }
+		.post-social__list { border-color: $soft-gray; }
+		.post-social__item-link { color: $dark-gray; }
+		.post-social__item-link:hover { color: $accent1; }
+		.post-social__item-link:active { color: rgba( $accent1, 0.8 ); }
+
+		// Opening hours
+		.post-hours { background-color: $x-soft-gray; }
+		.post-hours__note { color: $gray; }
+
+	}
+
+	/* -------------------------------------------------------------------------
+		DOCUMENTS
+	------------------------------------------------------------------------- */
+
+	// General
+	.lsvr_document-post-page {
+
+		// Attachments
+		.post-attachments__list { border-color: $soft-gray; }
+		.post-attachments__item-link { @include link-decor; }
+		.post-attachments__item-filesize { color: $gray; }
+		.post-attachments__item-label { color: $dark-gray; border-color: $soft-gray; }
+
+	}
+
+	// Categorized attachments archive layout
+	.lsvr_document-attachments { border-color: $soft-gray; }
+	.lsvr_document-attachments__item--folder.lsvr_document-attachments__item--level-1 { border-color: $soft-gray; }
+	.lsvr_document-attachments__item-icon--folder { color: $accent2; }
+	.lsvr_document-attachments__item-link { @include link-decor; }
+	.lsvr_document-attachments__item-link--folder { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+	.lsvr_document-attachments__item-size { color: $gray; }
+	.lsvr_document-attachments__item-label { color: $dark-gray; border-color: $soft-gray; }
+	.lsvr_document-attachments__item-toggle { border-color: rgba( #000, 0.1 ); color: $accent1; }
+	.lsvr_document-attachments__item-toggle:hover { border-color: $accent1; }
+	.lsvr_document-attachments__item-toggle:active { border-color: rgba( $accent1, 0.5 ); }
+	.lsvr_document-attachments__item-toggle--active { color: $dark-gray; }
+
+	/* -------------------------------------------------------------------------
+		EVENTS
+	------------------------------------------------------------------------- */
+
+	// Grid archive layout
+	.lsvr_event-post-archive--grid {
+
+		// Dark style
+		&.lsvr_event-post-archive--layout-style-dark {
+
+			// Container
+			.post__container { color: #FFF; background-color: $dark-gray; }
+
+			// Post info
+			.post-info:after { background-color: rgba( #FFF, 0.2 ); }
+			.post-info__date { color: #FFF; }
+			.post-info__date-month { color: $accent2; }
+			.post__categories { color: $gray; }
+			.post__term-link { @include link-decor( 0, 1px, 1px, rgba( #FFF, 0.8 ) ); color: rgba( #FFF, 0.8 ); }
+			.post__title-link { @include link-decor( 0, 1px, 1px, #FFF ); color: #FFF; }
+			.post-info__time-location { color: rgba( #FFF, 0.8 ); }
+			.post__location-link { @include link-decor( 0, 1px, 1px, #FFF ); color: #FFF; }
+
+		}
+
+	}
+
+	// Single
+	.lsvr_event-post-single {
+
+		// Post info
+		.post-info__title { color: $gray; }
+		.post-info__list { background-color: $x-soft-gray; }
+		.post-info__list:before { background-color: $accent2; background-image: linear-gradient( to bottom, $accent1, $accent2 ); }
+		.post-info__item { border-color: $soft-gray; }
+		.post-info__item-title { color: $dark-gray; }
+		.post-info__item-title .post__location-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+		.post-info__item--date .post-info__item-text { color: $dark-gray; }
+
+		// Upcoming dates
+		.post-upcoming-dates__item { color: $dark-gray; background-color: $x-soft-gray; }
+
+	}
+
+	/* -------------------------------------------------------------------------
+		FAQ
+	------------------------------------------------------------------------- */
+
+	// List archive layout
+	.lsvr_faq-post-archive--list {
+
+		.post { border-color: $soft-gray; }
+
+		// Header
+		.post__header-icon { color: #DB7B74; }
+		.post__header-toggle { border-color: rgba( #000, 0.1 ); color: $accent1; }
+		.post__header-toggle:hover { border-color: $accent1; }
+		.post__header-toggle:active { border-color: rgba( $accent1, 0.5 ); }
+		.post__header-toggle--active { color: $dark-gray; }
+
+		// Meta
+		.post-meta { color: $gray; }
+		.post-meta__item:before { background-color: $gray; }
+		.post-meta__item-link,
+		.post-meta .post__term-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+
+		// Expandable list
+		.post-archive__list--expandable {
+
+			.post { background-color: $x-soft-gray; border-color: transparent; }
+			.post--expanded { background-color: transparent; border-color: $soft-gray; }
+
+		}
+
+	}
+
+	/* -------------------------------------------------------------------------
+		GALLERIES
+	------------------------------------------------------------------------- */
+
+	// Photogrid archive layout
+	.lsvr_gallery-post-archive--photogrid {
+
+		.post { background-color: $dark-gray; }
+		.post.has-post-thumbnail { background-color: transparent; }
+
+		// Container
+		.post__container { color: #FFF; background-color: $dark-gray; }
+
+		// Categories
+		.post__categories { color: $gray; }
+		.post__term-link { @include link-decor( 0, 1px, 1px, rgba( #FFF, 0.8 ) ); color: rgba( #FFF, 0.8 ); }
+
+		// Title
+		.post__title-link { @include link-decor( 0, 1px, 1px, #FFF ); color: #FFF; }
+
+		// Permalink
+		.post-permalink__link { color: $accent2; }
+		.post-permalink__link:hover .post-permalink__link-label { box-shadow: 0 1px 0 0 $accent2; }
+		.post-permalink__link:active .post-permalink__link-label { box-shadow: 0 1px 0 0 rgba( $accent2, 0.5 ); }
+
+		// Overlay link
+		.post__overlay-link { background-color: transparent; }
+		.post__overlay-link:hover { background-color: rgba( #FFF, 0.03 ); }
+		.post__overlay-link:active { background-color: rgba( #FFF, 0.06 ); }
+
+	}
+
+	// Single
+	.lsvr_gallery-post-single {
+
+		// Post Fields
+		.post-fields__item-title { color: $body-font; border-color: $soft-gray; }
+
+	}
+
+	/* -------------------------------------------------------------------------
+		PEOPLE
+	------------------------------------------------------------------------- */
+
+	// Grid archive layout
+	.lsvr_person-post-archive--grid {
+
+		// Dark style
+		&.lsvr_person-post-archive--layout-style-dark {
+
+			// Container
+			.post__container { color: #FFF; background-color: $dark-gray; }
+
+			// Title
+			.post__title-link { @include link-decor( 0, 1px, 1px, #FFF ); color: #FFF; }
+			.post__subtitle { color: rgba( #FFF, 0.8 ); }
+
+			// Content
+			.post__content { color: rgba( #FFF, 0.8 ); }
+
+			// Social
+			.post-social__item-link { color: $accent2; }
+			.post-social__item-link:hover { color: #FFF; }
+			.post-social__item-link:active { color: rgba( #FFF, 0.8 ); }
+
+		}
+
+	}
+
+	// Single
+	.lsvr_person-post-single {
+
+		.post-contact__list { border-color: $soft-gray; }
+		.post-contact__item > a { @include link-decor; }
+		.post-social__list { border-color: $soft-gray; }
+		.post-social__item-link { color: $dark-gray; }
+		.post-social__item-link:hover { color: $accent1; }
+		.post-social__item-link:active { color: rgba( $accent1, 0.8 ); }
+		.post-contact__item-icon { color: $gray; }
+
+	}
+
+	/* -------------------------------------------------------------------------
+		SERVICES
+	------------------------------------------------------------------------- */
+
+	// Photogrid archive layout
+	.lsvr_service-post-archive--photogrid {
+
+		.post { color: #FFF; background-color: $dark-gray; }
+		.post:before { background: linear-gradient( 180deg, rgba( #000, 1 ) 0%, rgba( #000, 0.5 ) 100% ); }
+
+		// Icon
+		.post__icon-inner:before { background-image: linear-gradient( to right, $accent1 0%, $accent2 100% ); }
+		.post__icon-ico { background-image: linear-gradient( to right, $accent1 0%, $accent2 100% ); }
+
+		// Title
+		.post__title-link { @include link-decor( 0, 2px, 1px, #FFF ); color: #FFF; }
+
+		// Content
+		.post__content { color: rgba( #FFF, 0.8 ); }
+
+		// Permalink
+		.post-permalink__link { color: $accent2; }
+		.post-permalink__link:hover .post-permalink__link-label { box-shadow: 0 1px 0 0 $accent2; }
+		.post-permalink__link:active .post-permalink__link-label { box-shadow: 0 1px 0 0 rgba( $accent2, 0.5 ); }
+
+	}
+
+	/* -------------------------------------------------------------------------
+		TESTIMONIALS
+	------------------------------------------------------------------------- */
+
+	// Grid archive layout
+	.lsvr_testimonial-post-archive--grid {
+
+		.post { background-color: $x-soft-gray; }
+
+		// Footer
+		.post__title-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+	}
+
+	// Single
+	.lsvr_testimonial-post-single {
+
+		// Quote
+		.post__quote-content:before { background-color: $accent2; background-image: linear-gradient( to bottom, $accent1, $accent2 ); }
+		.post__title-name { color: $dark-gray; }
+
+	}
+
+	/* -------------------------------------------------------------------------
+		ERROR 404 PAGE
+	------------------------------------------------------------------------- */
+
+	.error-404-page { background-color: $x-soft-gray; }
+	.error-404-page__404 { color: $accent1; background-image: linear-gradient( to right, $accent1 0%, $accent2 100% ); }
+	.error-404-page__back-link { color: #FFF; background-color: $accent1; }
+
+
+/* -----------------------------------------------------------------------------
+
+	5. SIDEBAR
+
+----------------------------------------------------------------------------- */
+
+	/* -------------------------------------------------------------------------
+		WIDGETS
+	------------------------------------------------------------------------- */
+
+	.widget__more { border-color: rgba( #000, 0.07 ); }
+	.widget__more-link:hover .widget__more-link-label { box-shadow: 0 1px 0 0 $accent1; }
+	.widget__more-link:active .widget__more-link-label { box-shadow: 0 1px 0 0 rgba( $accent1, 0.5 ); }
+
+	// LSVR Document Attachments
+	.lsvr_document-attachments-widget__item { border-color: rgba( #000, 0.07 ); }
+	.lsvr_document-attachments-widget__item-icon { color: $gray; }
+	.lsvr_document-attachments-widget__item-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+	.lsvr_document-attachments-widget__item-filesize-wrapper { color: $gray; }
+	.lsvr_document-attachments-widget__item-label { color: $gray; }
+
+	// LSVR Directory
+	.lsvr_listing-list-widget__item { border-color: rgba( #000, 0.07 ); }
+	.lsvr_listing-list-widget__item-category { color: $gray; }
+	.lsvr_listing-list-widget__item-category-link { @include link-decor( 0, 1px, 1px, $gray ); color: $gray; }
+	.lsvr_listing-list-widget__item-title-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+	.lsvr_listing-list-widget__item-address { color: $gray; }
+
+	// LSVR Documents
+	.lsvr_document-list-widget__item { border-color: rgba( #000, 0.07 ); }
+	.lsvr_document-list-widget__item-title-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+	.lsvr_document-list-widget__item-date { color: $gray; }
+	.lsvr_document-list-widget__item-count { color: $gray; }
+
+	// LSVR Events
+	.lsvr_event-list-widget__item { border-color: rgba( #000, 0.07 ); }
+	.lsvr_event-list-widget__item-title-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+	.lsvr_event-list-widget__item-location-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+
+		// Bold date
+		.lsvr_event-list-widget__content--has-bold-date {
+			.lsvr_event-list-widget__item:after { background-color: rgba( #000, 0.1 ); }
+			.lsvr_event-list-widget__item-date { color: $dark-gray; }
+			.lsvr_event-list-widget__item-date-month { color: $accent2; }
+		}
+
+	// LSVR FAQ
+	.lsvr_faq-list-widget__item { border-color: rgba( #000, 0.07 ); }
+	.lsvr_faq-list-widget__item-category { color: $gray; }
+	.lsvr_faq-list-widget__item-category-link { @include link-decor( 0, 1px, 1px, $gray ); color: $gray; }
+	.lsvr_faq-list-widget__item-title-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+
+
+	// LSVR Featured Service
+	.lsvr_service-featured-widget__content-inner { color: #FFF; background-color: #000; }
+	.lsvr_service-featured-widget__icon { background: linear-gradient( to right, $accent1 0%, $accent2 100% ); }
+	.lsvr_service-featured-widget__icon-inner { background-color: #000; }
+	.lsvr_service-featured-widget__icon-image { background-image: linear-gradient( to right, $accent1 0%, $accent2 100% ); }
+	.lsvr_service-featured-widget__category { color: rgba( #FFF, 0.8 ); }
+	.lsvr_service-featured-widget__category-link { @include link-decor( 0, 1px, 1px, rgba( #FFF, 0.8 ) ); color: rgba( #FFF, 0.8 ); }
+	.lsvr_service-featured-widget__title-link { @include link-decor( 0, 1px, 1px, #FFF ); color: #FFF; }
+	.lsvr_service-featured-widget__excerpt { color: rgba( #FFF, 0.8 ); }
+	.lsvr_service-featured-widget .widget__more-link { color: $accent2; }
+	.lsvr_service-featured-widget .widget__more-link:hover .widget__more-link-label { box-shadow: 0 1px 0 0 $accent2; }
+	.lsvr_service-featured-widget .widget__more-link:active .widget__more-link-label { box-shadow: 0 1px 0 0 rgba( $accent2, 0.5 ); }
+
+	// LSVR Menu
+	.lsvr-menu-widget {
+		a { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+	}
+
+	// LSVR People
+	.lsvr_person-list-widget__item-title-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+	.lsvr_person-list-widget__item-subtitle { color: $gray; }
+	.lsvr_person-list-widget__item-social-link { color: $dark-gray; }
+	.lsvr_person-list-widget__item-social-link:hover { color: $accent1; }
+	.lsvr_person-list-widget__item-social-link:active { color: rgba( $accent1, 0.8 ); }
+
+	// LSVR Posts
+	.lsvr-post-list-widget__item { border-color: rgba( #000, 0.07 ); }
+	.lsvr-post-list-widget__item-category { color: $gray; }
+	.lsvr-post-list-widget__item-category-link { @include link-decor( 0, 1px, 1px, $gray ); color: $gray; }
+	.lsvr-post-list-widget__item-title-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+	.lsvr-post-list-widget__item-date { color: $gray; }
+
+	// LSVR Services
+	.lsvr_service-list-widget__item { border-color: rgba( #000, 0.07 ); }
+	.lsvr_service-list-widget__item-icon { background: linear-gradient( to right, $accent1 0%, $accent2 100% ); }
+	.lsvr_service-list-widget__item-icon-inner { background-color: #FFF; }
+	.lsvr_service-list-widget__item-icon-image { background-image: linear-gradient( to right, $accent1 0%, $accent2 100% ); }
+	.lsvr_service-list-widget__item-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+
+
+/* -----------------------------------------------------------------------------
+
+	6. FOOTER
+
+----------------------------------------------------------------------------- */
+
+	/* -------------------------------------------------------------------------
+        FOOTER WIDGETS
+    ------------------------------------------------------------------------- */
+
+    .footer-widgets { border-color: $soft-gray; }
+
+	/* -------------------------------------------------------------------------
+        FOOTER BOTTOM
+    ------------------------------------------------------------------------- */
+
+ 	.footer-bottom { color: rgba( $footer-font, 0.5 ); background-color: $footer-bg; }
+
+ 		// Footer social
+    	.footer--has-menu .footer-social:before { border-color: rgba( #FFF, 0.2 ); }
+    	.footer-social__item-link { color: rgba( #FFF, 0.5 ); }
+    	.footer-social__item-link:hover { color: rgba( #FFF, 1 ); }
+    	.footer-social__item-link:active { color: rgba( #FFF, 0.8 ); }
+
+		// Footer menu
+		.footer-menu__item-link { @include link-decor( 0, 1px, 1px, rgba( $footer-font, 0.5 ), rgba( $footer-font, 0.5 ), rgba( $footer-font, 0.3 ), ); color: rgba( $footer-font, 0.5 ); }
+
+		// Footer text
+		.footer-text a { @include link-decor( 0, 1px, 1px, rgba( $footer-font, 0.5 ), rgba( $footer-font, 0.5 ), rgba( $footer-font, 0.3 ), ); color: rgba( $footer-font, 0.5 ); }
+
+    	// Back to top
+    	.footer--has-social-links .back-to-top:before,
+    	.footer--has-menu .back-to-top:before { border-color: rgba( #FFF, 0.2 ); }
+    	.back-to-top__link { color: #FFF; }
+
+
+/* -----------------------------------------------------------------------------
+
+	7. ELEMENTS
+
+----------------------------------------------------------------------------- */
+
+	/* -------------------------------------------------------------------------
+		WORDBENCH CONTACT
+	------------------------------------------------------------------------- */
+
+	.lsvr-wordbench-contact__form { background-color: $x-soft-gray; }
+	.lsvr-wordbench-contact__contact-list { border-color: $soft-gray; }
+	.lsvr-wordbench-contact__contact-item > a { @include link-decor; }
+	.lsvr-wordbench-contact__contact-item-icon { color: $gray; }
+	.lsvr-wordbench-contact__social-list { border-color: $soft-gray; }
+	.lsvr-wordbench-contact__social-item-link { color: $dark-gray; }
+	.lsvr-wordbench-contact__social-item-link:hover { color: $accent1; }
+	.lsvr-wordbench-contact__social-item-link:active { color: rgba( $accent1, 0.8 ); }
+
+	/* -------------------------------------------------------------------------
+		WORDBENCH HERO
+	------------------------------------------------------------------------- */
+
+	.lsvr-wordbench-hero { background-color: $x-soft-gray; }
+	.lsvr-wordbench-hero__header-inner { color: #FFF; background-color: $accent2; }
+	.lsvr-wordbench-hero__title { color: #FFF; }
+
+		// Search
+		.lsvr-wordbench-hero__search-input-wrapper { background-color: #FFF;  }
+		.lsvr-wordbench-hero__search-filter-toggle { color: $gray; }
+		.lsvr-wordbench-hero__search-filter-toggle:hover { color: $accent1; }
+		.lsvr-wordbench-hero__search-filter-toggle--active { color: $accent1; }
+		.lsvr-wordbench-hero__search-filter-toggle:after { background-color: $soft-gray; }
+		.lsvr-wordbench-hero__search-submit { color: $dark-gray; }
+		.lsvr-wordbench-hero__search-submit:hover { color: $accent1; }
+		.lsvr-wordbench-hero__search-submit:active { color: rgba( $accent1, 0.9 ); }
+		.lsvr-wordbench-hero__search-panel { color: $body-font; border-color: rgba( #000, 0.1 ); background-color: #FFF; box-shadow: 0 1px 3px 0 rgba( #000, 0.1 ); }
+		.lsvr-wordbench-hero__search-filter-label { border-color: rgba( #000, 0.1 ); }
+		.lsvr-wordbench-hero__search-filter-label:hover { border-color: rgba( $accent1, 0.5 ); }
+		.lsvr-wordbench-hero__search-filter-label:active { border-color: rgba( $accent1, 0.4 ); }
+		.lsvr-wordbench-hero__search-filter-label--active { color: #FFF; background-color: $accent1; border-color: $accent1; }
+
+	/* -------------------------------------------------------------------------
+		WORDBENCH POST GRID
+	------------------------------------------------------------------------- */
+
+	.lsvr-wordbench-post-grid__subtitle,
+	.lsvr-wordbench-post-grid__title { color: #FFF; }
+	.lsvr-wordbench-post-grid__categories-icon { color: #FFF; }
+	.lsvr-wordbench-post-grid__categories-item-link { @include link-decor( 0, 2px, 2px, #FFF ); color: #FFF; }
+	.lsvr-wordbench-post-grid__categories-item-link--active { color: #FFF; box-shadow: 0 2px 0 0 #FFF; }
+	.lsvr-wordbench-post-grid__more { border-color: rgba( #FFF, 0.2 ); }
+	.lsvr-wordbench-post-grid__more-link { color: #FFF; border-color: rgba( #FFF, 0.2 ); }
+	.lsvr-wordbench-post-grid__more-link:hover { color: #FFF; border-color: rgba( #FFF, 0.3 ); }
+	.lsvr-wordbench-post-grid__more-link:active { color: #FFF; border-color: rgba( #FFF, 0.25 ); }
+	.lsvr-wordbench-post-grid__post-container { color: $body-font; background-color: #FFF; }
+	.lsvr-wordbench-post-grid__post-title-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+	.lsvr-wordbench-post-grid__post-meta { color: $body-font; }
+	.lsvr-wordbench-post-grid__post-meta-item:after { background-color: $gray; }
+	.lsvr-wordbench-post-grid__post-meta-item-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+	.lsvr-wordbench-post-grid__post-content { color: $body-font; }
+	.lsvr-wordbench-post-grid__post-permalink-link { color: $accent1; }
+	.lsvr-wordbench-post-grid__post-permalink-link:hover .lsvr-wordbench-post-grid__post-permalink-link-label { box-shadow: 0 1px 0 0 $accent1; }
+	.lsvr-wordbench-post-grid__post-permalink-link:active .lsvr-wordbench-post-grid__post-permalink-link-label { box-shadow: 0 1px 0 0 rgba( $accent1, 0.5 ); }
+
+		// Style 1 & 2
+		.lsvr-wordbench-post-grid--style1,
+		.lsvr-wordbench-post-grid--style2 {
+			&.lsvr-wordbench-post-grid { background-color: #FFF; }
+			.lsvr-wordbench-post-grid__bg { background-color: #FFF; }
+			.lsvr-wordbench-post-grid { background-color: #FFF; }
+			.lsvr-wordbench-post-grid__title { color: $dark-gray; }
+			.lsvr-wordbench-post-grid__subtitle { color: $body-font; }
+			.lsvr-wordbench-post-grid__categories-icon { color: $dark-gray; }
+			.lsvr-wordbench-post-grid__categories-item-link { @include link-decor( 0, 2px, 2px, $dark-gray ); color: $dark-gray; }
+			.lsvr-wordbench-post-grid__categories-item-link--active { color: $accent1; box-shadow: 0 2px 0 0 $accent1; }
+			.lsvr-wordbench-post-grid__more { border-color: rgba( #000, 0.1 ); }
+			.lsvr-wordbench-post-grid__more-link { color: $accent1; border-color: rgba( #000, 0.1 ); }
+			.lsvr-wordbench-post-grid__more-link:hover { border-color: $accent1; }
+			.lsvr-wordbench-post-grid__more-link:active { border-color: rgba( $accent1, 0.5 ); }
+		}
+		.lsvr-wordbench-post-grid--style2 .lsvr-wordbench-post-grid__bg { background-color: transparent; background-image: linear-gradient( 45deg, #EEF2F8, #EAEBEB ); }
+
+		// Style 3, 4, 5, 6
+		.lsvr-wordbench-post-grid--style3 .lsvr-wordbench-post-grid__bg { background-color: $dark-gray; }
+		.lsvr-wordbench-post-grid--style4 .lsvr-wordbench-post-grid__bg { background-color: $accent1; }
+		.lsvr-wordbench-post-grid--style5 .lsvr-wordbench-post-grid__bg { background-color: $accent2; }
+		.lsvr-wordbench-post-grid--style6 .lsvr-wordbench-post-grid__bg { background-color: transparent; background-image: linear-gradient( 45deg, $accent1, $accent2 ); }
+
+		// Grid layout
+		.lsvr-wordbench-post-grid--layout-grid {
+			.lsvr-wordbench-post-grid__post-categories { color: $gray; }
+			.lsvr-wordbench-post-grid__post-categories .post__term-link { @include link-decor( 0, 1px, 1px, $body-font ); color: $body-font; }
+		}
+
+		// Grid layout light
+		.lsvr-wordbench-post-grid--layout-grid.lsvr-wordbench-post-grid--layout-style-light {
+			.lsvr-wordbench-post-grid__post { box-shadow: 0 1px 8px rgba( #000, 0.1 ); }
+		}
+
+		// Grid layout dark
+		.lsvr-wordbench-post-grid--layout-grid.lsvr-wordbench-post-grid--layout-style-dark {
+			.lsvr-wordbench-post-grid__post-container { color: #FFF; background-color: $dark-gray; }
+			.lsvr-wordbench-post-grid__post-categories { color: #FFF; }
+			.lsvr-wordbench-post-grid__post-categories .post__term-link { @include link-decor( 0, 1px, 1px, rgba( #FFF, 0.8 ) ); color: rgba( #FFF, 0.8 ); }
+			.lsvr-wordbench-post-grid__post-title-link { @include link-decor( 0, 1px, 1px, #FFF ); color: #FFF; }
+			.lsvr-wordbench-post-grid__post-meta { color: rgba( #FFF, 0.8 ); }
+			.lsvr-wordbench-post-grid__post-meta-item:after { background-color: $gray; }
+			.lsvr-wordbench-post-grid__post-meta-item-link { @include link-decor( 0, 1px, 1px, #FFF ); color: #FFF; }
+			.lsvr-wordbench-post-grid__post-content { color: rgba( #FFF, 0.8 ); }
+			.lsvr-wordbench-post-grid__post-permalink-link { color: $accent2; }
+			.lsvr-wordbench-post-grid__post-permalink-link:hover .lsvr-wordbench-post-grid__post-permalink-link-label { box-shadow: 0 1px 0 0 $accent2; }
+			.lsvr-wordbench-post-grid__post-permalink-link:active .lsvr-wordbench-post-grid__post-permalink-link-label { box-shadow: 0 1px 0 0 rgba( $accent2, 0.5 ); }
+		}
+
+		// Photogrid layout
+		.lsvr-wordbench-post-grid--layout-photogrid {
+			.lsvr-wordbench-post-grid__post-bg { color: #FFF; background-color: $dark-gray; }
+			.lsvr-wordbench-post-grid__post-bg:before { background: linear-gradient( 180deg, rgba( #000, 1 ) 0%, rgba( #000, 0.3 ) 50%, rgba( #000, 1 ) 100% ); }
+			.lsvr-wordbench-post-grid__post-categories .post__term-link { color: #FFF; background-color: $accent1; }
+			.lsvr-wordbench-post-grid__post-categories .post__term-link:hover { background-color: rgba( $accent1, 0.8 ); }
+			.lsvr-wordbench-post-grid__post-categories .post__term-link:active { background-color: rgba( $accent1, 0.6 ); }
+			.lsvr-wordbench-post-grid__post-title-link { @include link-decor( 0, 2px, 2px, #FFF ); color: #FFF; }
+			.lsvr-wordbench-post-grid__post:hover .lsvr-wordbench-post-grid__post-title-link { box-shadow: 0 2px 0 0 #FFF; }
+			.lsvr-wordbench-post-grid__post:hover .lsvr-wordbench-post-grid__post-title-link:active { box-shadow: 0 2px 0 0 rgba( #FFF, 0.5 ); }
+			.lsvr-wordbench-post-grid__post-meta { color: #FFF; border-color: rgba( #FFF, 0.2 ); }
+			.lsvr-wordbench-post-grid__post-meta-item-link { @include link-decor( 0, 1px, 1px, #FFF ); color: #FFF; }
+			.lsvr-wordbench-post-grid__post-content { color: rgba( #FFF, 0.8 ); }
+		}
+
+		// Events Grid
+		.lsvr-wordbench-post-grid--events.lsvr-wordbench-post-grid--layout-grid {
+			.lsvr-wordbench-post-grid__post-info:after { background-color: rgba( #000, 0.2 ); }
+			.lsvr-wordbench-post-grid__post-info-date { color: $dark-gray; }
+			.lsvr-wordbench-post-grid__post-info-time-location { color: $body-font; }
+			.post__location-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+		}
+
+		// Events Grid Dark
+		.lsvr-wordbench-post-grid--events.lsvr-wordbench-post-grid--layout-grid.lsvr-wordbench-post-grid--layout-style-dark {
+			.lsvr-wordbench-post-grid__post-info:after { background-color: rgba( #FFF, 0.2 ); }
+			.lsvr-wordbench-post-grid__post-info-date { color: #FFF; }
+			.lsvr-wordbench-post-grid__post-info-date-month { color: $accent2; }
+			.lsvr-wordbench-post-grid__post-info-time-location { color: rgba( #FFF, 0.8 ); }
+			.post__location-link { @include link-decor( 0, 1px, 1px, #FFF ); color: #FFF; }
+		}
+
+		// Events Photogrid
+		.lsvr-wordbench-post-grid--events.lsvr-wordbench-post-grid--layout-photogrid {
+			.lsvr-wordbench-post-grid__post-info-date { border-color: rgba( #FFF, 0.2 ); }
+			.lsvr-wordbench-post-grid__post-info-time-location { color: rgba( #FFF, 0.8 ); }
+			.post__location-link { @include link-decor( 0, 1px, 1px, #FFF ); color: #FFF; }
+		}
+
+		// Testimonials
+		.lsvr-wordbench-post-grid--testimonials {
+			.lsvr-wordbench-post-grid__post-container { color: $body-font; background-color: $x-soft-gray; }
+			.lsvr-wordbench-post-grid__post-title-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+			.lsvr-wordbench-post-grid__post-quote-content:before { background-color: $accent2; background-image: linear-gradient( to bottom, $accent1, $accent2 ); }
+			.lsvr-wordbench-post-grid__post-title-name { color: $dark-gray; }
+		}
+
+	/* -------------------------------------------------------------------------
+		WORDBENCH SIDEBAR
+	------------------------------------------------------------------------- */
+
+	.lsvr-wordbench-sidebar__grid-wrapper:before,
+	.lsvr-wordbench-sidebar__grid-wrapper:after { background-color: $x-soft-gray; }
+
+	/* -------------------------------------------------------------------------
+		WORDBENCH SITEMAP
+	------------------------------------------------------------------------- */
+
+	.lsvr-wordbench-sitemap__header-inner { color: #FFF; background-color: $accent2; }
+	.lsvr-wordbench-sitemap__title { color: #FFF; }
+
+		// Search
+		.lsvr-wordbench-sitemap__search-input-wrapper { background-color: #FFF;  }
+		.lsvr-wordbench-sitemap__search-filter-toggle { color: $gray; }
+		.lsvr-wordbench-sitemap__search-filter-toggle:hover { color: $accent1; }
+		.lsvr-wordbench-sitemap__search-filter-toggle--active { color: $accent1; }
+		.lsvr-wordbench-sitemap__search-filter-toggle:after { background-color: $soft-gray; }
+		.lsvr-wordbench-sitemap__search-submit { color: $dark-gray; }
+		.lsvr-wordbench-sitemap__search-submit:hover { color: $accent1; }
+		.lsvr-wordbench-sitemap__search-submit:active { color: rgba( $accent1, 0.9 ); }
+		.lsvr-wordbench-sitemap__search-panel { color: $body-font; border-color: rgba( #000, 0.1 ); background-color: #FFF; box-shadow: 0 1px 3px 0 rgba( #000, 0.1 ); }
+		.lsvr-wordbench-sitemap__search-filter-label { border-color: rgba( #000, 0.1 ); }
+		.lsvr-wordbench-sitemap__search-filter-label:hover { border-color: rgba( $accent1, 0.5 ); }
+		.lsvr-wordbench-sitemap__search-filter-label:active { border-color: rgba( $accent1, 0.4 ); }
+		.lsvr-wordbench-sitemap__search-filter-label--active { color: #FFF; background-color: $accent1; border-color: $accent1; }
+		.lsvr-wordbench-sitemap__search--filter-expanded .lsvr-wordbench-sitemap__search-results { border-color: $soft-gray; }
+		.lsvr-wordbench-sitemap__search-results-title { color: $gray; }
+		.lsvr-wordbench-sitemap__search-results-item { border-color: $soft-gray; }
+		.lsvr-wordbench-sitemap__search-results-item-type { color: $gray; }
+		.lsvr-wordbench-sitemap__search-results-item-link { @include link-decor; }
+	    .lsvr-wordbench-sitemap__search-results-more { border-color: $soft-gray; }
+		.lsvr-wordbench-sitemap__search-results-more-link:hover .lsvr-wordbench-sitemap__search-results-more-link-label { box-shadow: 0 1px 0 0 $accent1; }
+		.lsvr-wordbench-sitemap__search-results-more-link:active .lsvr-wordbench-sitemap__search-results-more-link-label { box-shadow: 0 1px 0 0 rgba( $accent1, 0.5 ); }
+
+		// Navigation
+
+			// Level 1
+			.lsvr-wordbench-sitemap__list:before,
+			.lsvr-wordbench-sitemap__list:after,
+			.lsvr-wordbench-sitemap__nav--4-cols.lsvr-wordbench-sitemap__nav:after { background-color: $soft-gray; }
+			.lsvr-wordbench-sitemap__item-title-icon { background-image: linear-gradient( to right, $accent1 0%, $accent2 100% ); }
+			.lsvr-wordbench-sitemap__item-link--level-1 { @include link-decor( 0, 2px, 2px, $dark-gray ); color: $dark-gray; }
+
+			// Level 2+
+			.lsvr-wordbench-sitemap__submenu .lsvr-wordbench-sitemap__item-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+
+	/* -------------------------------------------------------------------------
+		WORDBENCH SLIDER
+	------------------------------------------------------------------------- */
+
+	.lsvr-wordbench-slider { background-color: #FFF; }
+	.lsvr-wordbench-slider--active-item-style-style2 { background-color: transparent; background-image: linear-gradient( 45deg, #EEF2F8, #EAEBEB ); }
+	.lsvr-wordbench-slider--active-item-style-style3 { background-color: $dark-gray; }
+	.lsvr-wordbench-slider--active-item-style-style4 { background-color: $accent1; }
+	.lsvr-wordbench-slider--active-item-style-style5 { background-color: $accent2; }
+	.lsvr-wordbench-slider--active-item-style-style6 { background-color: transparent; background-image: linear-gradient( 45deg, $accent1, $accent2 ); }
+	.lsvr-wordbench-slider__item { background-color: #FFF; }
+	.lsvr-wordbench-slider__item-title { color: $dark-gray; }
+	.lsvr-wordbench-slider__item-text { color: $body-font; }
+	.lsvr-wordbench-slider__nav-button { color: $body-font; }
+	.lsvr-wordbench-slider__nav-item-button { background-color: $body-font; }
+	.lsvr-wordbench-slider__nav-item-button:hover { background-color: rgba( $body-font, 0.8 ); }
+	.lsvr-wordbench-slider__nav-item-button:active { background-color: rgba( $body-font, 0.6 ); }
+	.lsvr-wordbench-slider__nav-item-button--active:before { border-color: $body-font }
+
+		// Style 2
+		.lsvr-wordbench-slider__item--style2 .lsvr-wordbench-slider__item-inner { background-color: transparent; background-image: linear-gradient( 45deg, #EEF2F8, #EAEBEB ); }
+
+		// Style 3, 4, 5, 6
+		.lsvr-wordbench-slider--active-item-style-style3,
+		.lsvr-wordbench-slider--active-item-style-style4,
+		.lsvr-wordbench-slider--active-item-style-style5,
+		.lsvr-wordbench-slider--active-item-style-style6 {
+			.lsvr-wordbench-slider__nav-button { color: #FFF; }
+			.lsvr-wordbench-slider__nav-item-button { background-color: #FFF; }
+			.lsvr-wordbench-slider__nav-item-button:hover { background-color: rgba( #FFF, 0.8 ); }
+			.lsvr-wordbench-slider__nav-item-button:active { background-color: rgba( #FFF, 0.6 ); }
+			.lsvr-wordbench-slider__nav-item-button--active:before { border-color: #FFF; }
+		}
+		.lsvr-wordbench-slider__item--style3 .lsvr-wordbench-slider__item-inner { background-color: $dark-gray; }
+		.lsvr-wordbench-slider__item--style4 .lsvr-wordbench-slider__item-inner { background-color: $accent1; }
+		.lsvr-wordbench-slider__item--style5 .lsvr-wordbench-slider__item-inner { background-color: $accent2; }
+		.lsvr-wordbench-slider__item--style6 .lsvr-wordbench-slider__item-inner { background-color: transparent; background-image: linear-gradient( 45deg, $accent1, $accent2 ); }
+		.lsvr-wordbench-slider__item--style3,
+		.lsvr-wordbench-slider__item--style4,
+		.lsvr-wordbench-slider__item--style5,
+		.lsvr-wordbench-slider__item--style6 {
+			.lsvr-wordbench-slider__item-title,
+			.lsvr-wordbench-slider__item-text { color: #FFF; text-shadow: 1px 1px rgba( #000, 0.1 ); }
+			.lsvr-wordbench-slider__item-text { color: rgba( #FFF, 0.7 ); }
+		}
+		.lsvr-wordbench-slider__item--style3 {
+			.lsvr-wordbench-slider__item-button-link { background-color: $accent2; }
+			.lsvr-wordbench-slider__item-button-link:hover { background-color: rgba( $accent2, 0.9 ); }
+			.lsvr-wordbench-slider__item-button-link:active { background-color: rgba( $accent2, 0.85 ); }
+		}
+		.lsvr-wordbench-slider__item--style4,
+		.lsvr-wordbench-slider__item--style5,
+		.lsvr-wordbench-slider__item--style6 {
+			.lsvr-wordbench-slider__item-button-link { color: $dark-gray; background-color: #FFF; }
+			.lsvr-wordbench-slider__item-button-link:hover { background-color: rgba( #FFF, 0.9 ); }
+			.lsvr-wordbench-slider__item-button-link:active { background-color: rgba( #FFF, 0.85 ); }
+		}
+
+	/* -------------------------------------------------------------------------
+		WORDBENCH SPLIT SCREEN
+	------------------------------------------------------------------------- */
+
+	.lsvr-wordbench-splitscreen { background-color: #FFF; }
+	.lsvr-wordbench-splitscreen--style2 { background-color: transparent; background-image: linear-gradient( 45deg, #EEF2F8, #EAEBEB ); }
+	.lsvr-wordbench-splitscreen__title { color: $dark-gray; }
+	.lsvr-wordbench-splitscreen__subtitle { color: $body-font; }
+
+		// Style 3, 4, 5, 6
+		.lsvr-wordbench-splitscreen--style3 { background-color: $dark-gray; }
+		.lsvr-wordbench-splitscreen--style4 { background-color: $accent1; }
+		.lsvr-wordbench-splitscreen--style5 { background-color: $accent2; }
+		.lsvr-wordbench-splitscreen--style6 { background-color: transparent; background-image: linear-gradient( 45deg, $accent1, $accent2 ); }
+		.lsvr-wordbench-splitscreen--style3,
+		.lsvr-wordbench-splitscreen--style4,
+		.lsvr-wordbench-splitscreen--style5,
+		.lsvr-wordbench-splitscreen--style6 {
+			.lsvr-wordbench-splitscreen__title,
+			.lsvr-wordbench-splitscreen__subtitle,
+			.lsvr-wordbench-splitscreen__text { color: #FFF; text-shadow: 1px 1px rgba( #000, 0.1 ); }
+		}
+		.lsvr-wordbench-splitscreen--style3 {
+			.lsvr-wordbench-splitscreen__more-link { background-color: $accent2; }
+			.lsvr-wordbench-splitscreen__more-link:hover { background-color: rgba( $accent2, 0.9 ); }
+			.lsvr-wordbench-splitscreen__more-link:active { background-color: rgba( $accent2, 0.85 ); }
+		}
+		.lsvr-wordbench-splitscreen--style4,
+		.lsvr-wordbench-splitscreen--style5,
+		.lsvr-wordbench-splitscreen--style6 {
+			.lsvr-wordbench-splitscreen__more-link { color: $dark-gray; background-color: #FFF; }
+			.lsvr-wordbench-splitscreen__more-link:hover { background-color: rgba( #FFF, 0.9 ); }
+			.lsvr-wordbench-splitscreen__more-link:active { background-color: rgba( #FFF, 0.85 ); }
+		}
+
+
+	/* -------------------------------------------------------------------------
+		LSVR ELEMENTS
+	------------------------------------------------------------------------- */
+
+	// Alert Message
+	.lsvr-alert-message { background-color: rgba( $alert-info, 0.1 ); }
+	.lsvr-alert-message--success { background-color: rgba( $alert-success, 0.1 ); }
+	.lsvr-alert-message--warning { background-color: rgba( $alert-warning, 0.1 ); }
+	.lsvr-alert-message--info .lsvr-alert-message__icon { color: $alert-info; }
+	.lsvr-alert-message--success .lsvr-alert-message__icon { color: $alert-success; }
+	.lsvr-alert-message--warning .lsvr-alert-message__icon { color: $alert-warning; }
+
+	// Button
+	.lsvr-button { color: #FFF; background-color: $accent1; }
+	.lsvr-button:hover { background-color: rgba( $accent1, 0.9 ); }
+	.lsvr-button:active { background-color: rgba( $accent1, 0.85 ); }
+
+
+/* -----------------------------------------------------------------------------
+
+    8. RESPONSIVE
+
+----------------------------------------------------------------------------- */
+
+    /* -------------------------------------------------------------------------
+        LARGE DEVICES
+    ------------------------------------------------------------------------- */
+
+    @media ( max-width: 1199px ) {
+
+		// Elements
+	 	.lsvr-wordbench-slider--active-item-style-style1,
+	 	.lsvr-wordbench-slider--active-item-style-style2 {
+	 		&.lsvr-wordbench-slider--layout-text-left .lsvr-wordbench-slider__nav-button--prev,
+	 		&.lsvr-wordbench-slider--layout-text-right .lsvr-wordbench-slider__nav-button--prev,
+	 		&.lsvr-wordbench-slider--layout-text-left .lsvr-wordbench-slider__nav-button--next,
+	 		&.lsvr-wordbench-slider--layout-text-right .lsvr-wordbench-slider__nav-button--next { color: $body-font; border-color: $body-font; }
+	 	}
+	}
+
+
+    /* -------------------------------------------------------------------------
+        MEDIUM DEVICES
+    ------------------------------------------------------------------------- */
+
+    @media ( max-width: 991px ) {
+
+    	// Header
+    	.header-mobile-search-toggle,
+    	.header-mobile-menu-toggle { color: $dark-gray; }
+    	.header--has-search .header-mobile-menu-toggle:before { background-color: $soft-gray; }
+
+    		// Header search
+    		.header-search { border-color: $soft-gray; }
+
+    		// Header menu
+    		.header__navbar-menu { background-color: $x-soft-gray; border-color: $soft-gray; }
+    		.header-menu-primary__item-link { color: $dark-gray; }
+    		.header-menu-primary__item-link--current,
+    		.header-menu-primary__item-link:hover { color: $accent1; background-color: rgba( $accent1, 0.07 ); }
+    		.header-menu-primary__item-link:active { background-color: rgba( $accent1, 0.08 ); }
+    		.header-menu-primary__item--active > .header-menu-primary__submenu-toggle { color: $accent1; }
+
+    		// Header languages
+    		.header-menu-languages { color: $dark-gray; border-color: rgba( #000, 0.05 ); }
+    		.header-menu-languages__item-link { color: $dark-gray; }
+    		.header-menu-languages__item-link:hover { color: $accent1; }
+    		.header-menu-languages__item-link:active { color: rgba( $accent1, 0.8 ); }
+    		.header-menu-languages__item--active .header-menu-languages__item-link { color: $accent1; }
+
+    		// Secondary menu
+    		.header-menu-secondary { color: $dark-gray; border-color: rgba( #000, 0.05 ); }
+    		.header-menu-secondary__item-link { @include link-decor( 0, 1px, 1px, $dark-gray ); color: $dark-gray; }
+    		.header-menu-secondary__item-icon { color: $dark-gray; }
+
+    		// Header social
+    		.header-social { color: $dark-gray; border-color: rgba( #000, 0.05 ); }
+    		.header-social__item-link { color: $dark-gray; }
+    		.header-social__item-link:hover { color: $accent1; }
+    		.header-social__item-link:active { color: rgba( $accent1, 0.8 ); }
+
+	}
+
+	/* -------------------------------------------------------------------------
+        SMALL DEVICES
+    ------------------------------------------------------------------------- */
+
+    @media ( max-width: 767px ) {
+
+		// Elements
+		.lsvr-wordbench-sidebar__grid > .widget:nth-child( 2n ) { background-color: $x-soft-gray; }
+		.lsvr-wordbench-sitemap__item--level-0 { border-color: $soft-gray; }
+
+    }
