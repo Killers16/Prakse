@@ -132,6 +132,7 @@
 
 /* Buttons */
 .button{
+    
     cursor: pointer;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -150,12 +151,22 @@
     background: linear-gradient(to right,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);
 }
 #cancel-button {
+    width: 120px;
     position: inline;
     box-shadow: -1px 10px 20px #FF7DAE;
     background: #FF1744;
     background: -moz-linear-gradient(left,  #FF1744 0%, #FF5D95 80%, #FF5D95 100%);
     background: -webkit-linear-gradient(left,  #FF1744 0%, #FF5D95 80%, #FF5D95 100%);
     background: linear-gradient(to right,  #FF1744 0%, #FF5D95 80%, #FF5D95 100%);
+}
+#ok-button {
+    width: 120px;
+    position: inline;
+    box-shadow: 1px 10px 20px #FF7DAE;
+    background: #52A0FD;
+    background: -moz-linear-gradient(left,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);
+    background: -webkit-linear-gradient(left,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);
+    background: linear-gradient(to right,  #52A0FD 0%, #00C9FB 80%, #00C9FB 100%);
 }
 #add-button {
     display: block;
