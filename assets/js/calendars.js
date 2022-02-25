@@ -25,14 +25,14 @@ function init_calendar(date) {
     var row = $("<tr class='table-row'></tr>");
     var today = date.getDate();
     // Set date to 1 to find the first day of the month
-    date.setDate(1);
+    date.setDate(0);
     var first_day = date.getDay();
     // 35+firstDay is the number of date elements to be added to the dates table
     // 35 is from (7 days in a week) * (up to 5 rows of dates in a month)
     for(var i=0; i<35+first_day; i++) {
         // Since some of the elements will be blank, 
         // need to calculate actual date from index
-        var day = i-first_day+2;
+        var day = i-first_day+1;
         // If it is a sunday, make a new row
         if(i%7===0) {
             calendar_days.append(row);
@@ -40,7 +40,7 @@ function init_calendar(date) {
         }
         // if current index isn't a day in this month, make it blank
         if(i < first_day || day > day_count) {
-            var curr_date = $("<td class='table-date nil'>"+"</td>");
+            var curr_date = $(`<td class='table-date nil'></td>`);
             row.append(curr_date);
         }   
         else {
@@ -123,13 +123,12 @@ function new_event(event) {
     })
     // empty inputs and hide events
     $("#dialog input[type=text]").val('');
-    $("#dialog input[type=number]").val('');
     $(".events-container").hide(250);
     $("#dialog").show(250);
     // Event handler for cancel button
     $("#cancel-button").click(function() {
         $("#name").removeClass("error-input");
-        $("#count").removeClass("error-input");
+        
         $("#dialog").hide(250);
         $(".events-container").show(250);
     });
@@ -137,19 +136,16 @@ function new_event(event) {
     $("#ok-button").unbind().click({date: event.data.date}, function() {
         var date = event.data.date;
         var name = $("#name").val().trim();
-        var count = parseInt($("#count").val().trim());
+       
         var day = parseInt($(".active-date").html());
         // Basic form validation
         if(name.length === 0) {
             $("#name").addClass("error-input");
         }
-        else if(isNaN(count)) {
-            $("#count").addClass("error-input");
-        }
         else {
             $("#dialog").hide(250);
             console.log("new event");
-            new_event_json(name, count, date, day);
+            new_event_json(name, date, day);
             date.setDate(day);
             init_calendar(date);
         }
@@ -157,10 +153,9 @@ function new_event(event) {
 }
 
 // Adds a json event to event_data
-function new_event_json(name, count, date, day) {
+function new_event_json(name, date, day) {
     var event = {
         "occasion": name,
-        "invited_count": count,
         "year": date.getFullYear(),
         "month": date.getMonth()+1,
         "day": day
@@ -177,7 +172,7 @@ function show_events(events, month, day) {
     // If there are no events for this date, notify the user
     if(events.length===0) {
         var event_card = $("<div class='event-card'></div>");
-        var event_name = $("<div class='event-name'>There are no events planned for "+month+" "+day+".</div>");
+        var event_name = $("<div class='event-name'>Nav pievienots notikums  "+day+" "+month+"</div>");
         $(event_card).css({ "border-left": "10px solid #FF1744" });
         $(event_card).append(event_name);
         $(".events-container").append(event_card);
@@ -187,14 +182,14 @@ function show_events(events, month, day) {
         for(var i=0; i<events.length; i++) {
             var event_card = $("<div class='event-card'></div>");
             var event_name = $("<div class='event-name'>"+events[i]["occasion"]+":</div>");
-            var event_count = $("<div class='event-count'>"+events[i]["invited_count"]+" Invited</div>");
+            
             if(events[i]["cancelled"]===true) {
                 $(event_card).css({
                     "border-left": "10px solid #FF1744"
                 });
                 event_count = $("<div class='event-cancelled'>Cancelled</div>");
             }
-            $(event_card).append(event_name).append(event_count);
+            $(event_card).append(event_name);
             $(".events-container").append(event_card);
         }
     }
@@ -219,7 +214,7 @@ var event_data = {
     "events": [
     {
         "occasion": " Repeated Test Event ",
-        "invited_count": 120,
+      
         "year": 2017,
         "month": 5,
         "day": 10,
@@ -227,7 +222,7 @@ var event_data = {
     },
     {
         "occasion": " Repeated Test Event ",
-        "invited_count": 120,
+        
         "year": 2017,
         "month": 5,
         "day": 10,
@@ -235,7 +230,7 @@ var event_data = {
     },
         {
         "occasion": " Repeated Test Event ",
-        "invited_count": 120,
+      
         "year": 2017,
         "month": 5,
         "day": 10,
@@ -243,14 +238,14 @@ var event_data = {
     },
     {
         "occasion": " Repeated Test Event ",
-        "invited_count": 120,
+       
         "year": 2017,
         "month": 5,
         "day": 10
     },
         {
         "occasion": " Repeated Test Event ",
-        "invited_count": 120,
+       
         "year": 2017,
         "month": 5,
         "day": 10,
@@ -258,14 +253,14 @@ var event_data = {
     },
     {
         "occasion": " Repeated Test Event ",
-        "invited_count": 120,
+        
         "year": 2017,
         "month": 5,
         "day": 10
     },
         {
         "occasion": " Repeated Test Event ",
-        "invited_count": 120,
+      
         "year": 2017,
         "month": 5,
         "day": 10,
@@ -273,14 +268,14 @@ var event_data = {
     },
     {
         "occasion": " Repeated Test Event ",
-        "invited_count": 120,
+     
         "year": 2017,
         "month": 5,
         "day": 10
     },
         {
         "occasion": " Repeated Test Event ",
-        "invited_count": 120,
+        
         "year": 2017,
         "month": 5,
         "day": 10,
@@ -288,14 +283,14 @@ var event_data = {
     },
     {
         "occasion": " Repeated Test Event ",
-        "invited_count": 120,
+       
         "year": 2017,
         "month": 5,
         "day": 10
     },
     {
         "occasion": " Test Event",
-        "invited_count": 120,
+       
         "year": 2017,
         "month": 5,
         "day": 11
@@ -304,16 +299,16 @@ var event_data = {
 };
 
 const months = [ 
-    "January", 
-    "February", 
-    "March", 
-    "April", 
-    "May", 
-    "June", 
-    "July", 
-    "August", 
-    "September", 
-    "October", 
-    "November", 
-    "December" 
+    "Janvāri", 
+    "Februāri", 
+    "Martā", 
+    "Aprīlī", 
+    "Maija", 
+    "Jūnija", 
+    "Jūlija", 
+    "Augusta", 
+    "Septembri", 
+    "Oktobri", 
+    "Novembri", 
+    "Decembri" 
 ];
