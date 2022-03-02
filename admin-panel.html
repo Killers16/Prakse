@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <!-- STYLESHEETS : begin -->
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!------ Include the above in your HEAD tag ---------->
+	<head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="images/favicon.ico">
+
+        <!-- STYLESHEETS : begin -->
+		<link rel="stylesheet" type="text/css" href="assets/css/general.css"><!-- Default styles generated from assets/scss/general.scss (do not edit) -->
+        <link rel="stylesheet" type="text/css" href="assets/css/color-schemes/default.css"><!-- Default color scheme generated from assets/scss/color-schemes/default.scss (change to other pre-defined or custom color scheme) -->
+		<link rel="stylesheet" type="text/css" href="style.css"><!-- Place your own CSS into this file -->
+		<!-- STYLESHEETS : end -->
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Galvenā lapa | Kolka</title>
+        <link rel="shortcut icon" href="images/favicon.ico">
+        
+          <link rel="stylesheet" type="text/css" href="assets/css/panel.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+            <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+            <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+        </head>
+        <body>
+            <div id="wrapper">
+
+                <a href="#main" class="accessibility-link accessibility-link--skip-to-content screen-reader-text">Skip to content</a>
+                <a href="#header-menu-primary" class="accessibility-link accessibility-link--skip-to-nav screen-reader-text">Skip to main navigation</a>
+                <a href="#footer" class="accessibility-link accessibility-link--skip-to-footer screen-reader-text">Skip to footer</a>
+    
+                <!-- HEADER : begin -->
+                <header id="header" class="header--has-logo header--has-topbar header--has-search header--has-social-links header--sticky">
+                    <div class="header__inner">
+    
+    
+                        <!-- HEADER TOPBAR : begin -->
+                        <div class="header__topbar">
+                            <div class="header__topbar-inner">
+    
+                                <!-- HEADER LANGUAGES : begin -->
+                                <nav class="header-menu-languages" aria-label="Languages">
+    
+                                    <ul class="header-menu-languages__list" role="menu">
+    
+                                        <li class="header-menu-languages__item menu-item menu-item-type-custom menu-item-object-custom header-menu-languages__item--active" role="presentation">
+                                            <a href="#en" class="header-menu-languages__item-link header-menu-languages__item-link--level-0" role="menuitem">LV</a>
+                                        </li>
+    
+                                        <li class="header-menu-languages__item menu-item menu-item-type-custom menu-item-object-custom" role="presentation">
+                                            <a href="#de" class="header-menu-languages__item-link header-menu-languages__item-link--level-0" role="menuitem">EN</a>
+                                        </li>
+    
+    
+                                    </ul>
+    
+                                </nav>
+                                <!-- HEADER LANGUAGES : end -->
+    
+                                <!-- HEADER SEARCH TOGGLE : begin -->
+                                <div class="header-search-toggle">
+    
+                                    <button id="header-search-toggle-button" class="header-search-toggle__button"
+                                        type="button" title="Expand search" data-label-expand-popup="Expand search" data-label-collapse-popup="Collapse search"
+                                        aria-controls="header-search" aria-haspopup="true" aria-expanded="false">
+                                        <span class="header-search-toggle__icon" aria-hidden="true"></span>
+                                    </button>
+    
+                                </div>
+                                <!-- HEADER SEARCH TOGGLE : end -->
+    
+                                <!-- HEADER SOCIAL LINKS : begin -->
+                                <div class="header-social">
+    
+                                    <ul class="header-social__list" title="Social Media Links">
+    
+                                        <li class="header-social__item header-social__item--facebook">
+                                            <a class="header-social__item-link header-social__item-link--facebook" target="_blank" href="#facebook" title="Facebook">
+                                                <span class="header-social__icon lsvr-icon-facebook" aria-hidden="true"></span><!-- You can change the "lsvr-icon-facebook" to any other icon class. You can find the list of all built-in icons in the documentation. -->
+                                            </a>
+                                        </li>
+    
+                                        <li class="header-social__item header-social__item--instagram">
+                                            <a class="header-social__item-link header-social__item-link--instagram" target="_blank" href="#instagram" title="Instagram">
+                                                <span class="header-social__icon lsvr-icon-instagram" aria-hidden="true"></span>
+                                            </a>
+                                        </li>
+    
+                                        <li class="header-social__item header-social__item--twitter">
+                                            <a class="header-social__item-link header-social__item-link--twitter" target="_blank" href="#twitter" title="Twitter">
+                                                <span class="header-social__icon lsvr-icon-twitter" aria-hidden="true"></span>
+                                            </a>
+                                        </li>
+    
+                                    </ul>
+                                </div>
+                                <!-- HEADER SOCIAL LINKS : end -->
+    
+                                <!-- SECONDARY HEADER MENU : begin -->
+                                <nav class="header-menu-secondary" aria-label="Secondary Header Menu">
+                                    <ul id="menu-secondary-header-menu" class="header-menu-secondary__list" role="menu">
+    
+                                        <li class="header-menu-secondary__item header-menu-secondary__item--level-0 header-menu-secondary__item--has-icon" role="presentation">
+                                            <span class="header-menu-secondary__item-icon lsvr-icon-telephone" aria-hidden="true"></span><!-- You can change the "lsvr-icon-telephone" to any other icon class. You can find the list of all built-in icons in the documentation. -->
+                                            <a href="tel:2025550154" class="header-menu-secondary__item-link header-menu-secondary__item-link--level-0" role="menuitem">20202020</a>
+                                        </li>
+    
+                                        <li class="header-menu-secondary__item header-menu-secondary__item--level-0 header-menu-secondary__item--has-icon" role="presentation">
+                                            <span class="header-menu-secondary__item-icon lsvr-icon-envelope" aria-hidden="true"></span>
+                                            <a href="mailto:wordbench@example.org" class="header-menu-secondary__item-link header-menu-secondary__item-link--level-0" role="menuitem">parvalde.kolka@dundaga.lv</a>
+                                        </li>
+    
+                                    </ul>
+                                </nav>
+                                <!-- SECONDARY HEADER MENU : end -->
+    
+                            </div>
+                        </div>
+                        <!-- HEADER TOPBAR : end -->
+    
+                        <!-- HEADER SEARCH : begin -->
+                        <div id="header-search" class="header-search" role="group" aria-expanded="false">
+                            <div class="header-search__inner">
+    
+                                <!-- SEARCH FORM : begin -->
+                                <form class="header-search__form" action="search-results.html" method="get" role="search">
+    
+                                    <!-- INPUT WRAPPER : begin -->
+                                    <div class="header-search__input-wrapper">
+    
+                                        <label for="header-search-input" class="header-search__input-label screen-reader-text">Search</label>
+    
+                                        <input id="header-search-input" type="text" name="s" autocomplete="off" class="header-search__input" value="" placeholder="Search this site" aria-label="Search field">
+    
+                                        <button class="header-search__submit" type="submit" title="Submit search">
+                                            <span class="header-search__submit-icon" aria-hidden="true"></span>
+                                        </button>
+    
+                                    </div>
+                                    <!-- INPUT WRAPPER : end -->
+    
+                                    <!-- SEARCH PANEL : begin -->
+                                    <div class="header-search__panel">
+    
+                                        <!-- SEARCH FILTER : begin -->
+                                        <div class="header-search__filter">
+    
+                                            <label for="header-search-filter-type-any" class="header-search__filter-label header-search__filter-label--active">
+                                                <input type="checkbox" class="header-search__filter-checkbox" id="header-search-filter-type-any" name="search-filter[]" value="any" checked="checked">
+                                                Search everything
+                                            </label>
+    
+                                            <label for="header-search-filter-type-post" class="header-search__filter-label">
+                                                <input type="checkbox" class="header-search__filter-checkbox" id="header-search-filter-type-post" name="search-filter[]" value="post">
+                                                News
+                                            </label>
+    
+                                            <label for="header-search-filter-type-page" class="header-search__filter-label">
+                                                <input type="checkbox" class="header-search__filter-checkbox" id="header-search-filter-type-page" name="search-filter[]" value="page">
+                                                Pages
+                                            </label>
+    
+                                            <label for="header-search-filter-type-lsvr_listing" class="header-search__filter-label">
+                                                <input type="checkbox" class="header-search__filter-checkbox" id="header-search-filter-type-lsvr_listing" name="search-filter[]" value="lsvr_listing">
+                                                Locations
+                                            </label>
+    
+                                            <label for="header-search-filter-type-lsvr_document" class="header-search__filter-label">
+                                                <input type="checkbox" class="header-search__filter-checkbox" id="header-search-filter-type-lsvr_document" name="search-filter[]" value="lsvr_document">
+                                                Documents
+                                            </label>
+    
+                                            <label for="header-search-filter-type-lsvr_event" class="header-search__filter-label">
+                                                <input type="checkbox" class="header-search__filter-checkbox" id="header-search-filter-type-lsvr_event" name="search-filter[]" value="lsvr_event">
+                                                Events
+                                            </label>
+    
+                                            <label for="header-search-filter-type-lsvr_faq" class="header-search__filter-label">
+                                                <input type="checkbox" class="header-search__filter-checkbox" id="header-search-filter-type-lsvr_faq" name="search-filter[]" value="lsvr_faq">
+                                                FAQ
+                                            </label>
+    
+                                            <label for="header-search-filter-type-lsvr_person" class="header-search__filter-label">
+                                                <input type="checkbox" class="header-search__filter-checkbox" id="header-search-filter-type-lsvr_person" name="search-filter[]" value="lsvr_person">
+                                                City Council
+                                            </label>
+    
+                                            <label for="header-search-filter-type-lsvr_project" class="header-search__filter-label">
+                                                <input type="checkbox" class="header-search__filter-checkbox" id="header-search-filter-type-lsvr_project" name="search-filter[]" value="lsvr_project">
+                                                Galleries
+                                            </label>
+    
+                                            <label for="header-search-filter-type-lsvr_service" class="header-search__filter-label">
+                                                <input type="checkbox" class="header-search__filter-checkbox" id="header-search-filter-type-lsvr_service" name="search-filter[]" value="lsvr_service">
+                                                City Services
+                                            </label>
+    
+                                            <label for="header-search-filter-type-lsvr_testimonial" class="header-search__filter-label">
+                                                <input type="checkbox" class="header-search__filter-checkbox" id="header-search-filter-type-lsvr_testimonial" name="search-filter[]" value="lsvr_testimonial">
+                                                Vox Populi
+                                            </label>
+    
+                                        </div>
+                                        <!-- SEARCH FILTER : end -->
+    
+                                    </div>
+                                    <!-- SEARCH PANEL : end -->
+    
+                                </form>
+                                <!-- SEARCH FORM : end -->
+    
+                                <button class="header-search__close-button" type="button" title="Collapse search">
+                                    <span class="header-search__close-button-icon" aria-hidden="true"></span>
+                                </button>
+    
+                            </div>
+                        </div>
+                        <!-- HEADER SEARCH : end -->
+    
+                        <!-- HEADER NAVBAR : begin -->
+                        <div class="header__navbar">
+                            <div class="header__navbar-inner">
+    
+                                <!-- HEADER NAVBAR CONTAINER : begin -->
+                                <div class="header__navbar-container">
+    
+                                    <!-- HEADER BRANDING : begin -->
+                                    <div class="header-branding">
+                                        <div class="header-branding__inner">
+    
+                                            <!-- HEADER LOGO : begin -->
+                                            <div class="header-logo">
+                                                <a href="index.html" class="header-logo__link">
+                                                    <img src="content/wordbench-logo.png" class="header-logo__image" alt="Wordbench">
+                                                </a>
+                                            </div>
+                                            <!-- HEADER LOGO : end -->
+    
+                                        </div>
+                                    </div>
+                                    <!-- HEADER BRANDING : end -->
+    
+                                    <!-- HEADER MOBILE SEARCH TOGGLE : begin -->
+                                    <button type="button" class="header-mobile-search-toggle" title="Expand search"
+                                        data-label-collapse-popup="Collapse search" data-label-expand-popup="Expand search"
+                                        aria-controls="header-search" aria-haspopup="true" aria-expanded="false">
+                                        <span class="header-mobile-search-toggle__icon"></span>
+                                    </button>
+                                    <!-- HEADER MOBILE SEARCH TOGGLE : end -->
+    
+                                    <!-- HEADER MOBILE MENU TOGGLE : begin -->
+                                    <button type="button" class="header-mobile-menu-toggle" title="Expand menu"
+                                        data-label-collapse-popup="Collapse menu" data-label-expand-popup="Expand menu"
+                                        aria-controls="header__navbar-menu" aria-haspopup="true" aria-expanded="false">
+                                        <span class="header-mobile-menu-toggle__icon"></span>
+                                    </button>
+                                    <!-- HEADER MOBILE MENU TOGGLE : end -->
+    
+                                </div>
+                                <!-- HEADER NAVBAR CONTAINER : end -->
+    
+                                <!-- HEADER NAVBAR MENU : begin -->
+                                <div id="header__navbar-menu" class="header__navbar-menu">
+    
+                                    <!-- PRIMARY HEADER MENU : begin -->
+                                    <nav id="header-menu-primary" class="header-menu-primary"
+                                        data-label-expand-popup="Expand submenu" data-label-collapse-popup="Collapse submenu" aria-label="Primary Header Menu">
+    
+                                        
+    
+                                            <!-- MENU ITEM : begin -->
+                                            <li class="header-menu-primary__item header-menu-primary__item--level-1" role="presentation">
+                                                <a href="blog-archive.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-1" role="menuitem">
+                                                    <span class="header-menu-primary__item-link-label">Ziņas</span>
+                                                </a>
+                                            </li>
+                                            <!-- MENU ITEM : end -->
+    
+                                            <!-- MENU ITEM : begin -->
+                                            <li class="header-menu-primary__item header-menu-primary__item--level-1" role="presentation">
+                                                <a href="event-archive.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-1" role="menuitem">
+                                                    <span class="header-menu-primary__item-link-label">Laika ziņas</span>
+                                                </a>
+                                            </li>
+                                            <!-- MENU ITEM : end -->
+    
+                                            <!-- MENU ITEM : begin -->
+                                            <li class="header-menu-primary__item header-menu-primary__item--level-1" role="presentation">
+                                                <a href="service-archive.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-1" role="menuitem">
+                                                    <span class="header-menu-primary__item-link-label">Par Kolku</span>
+                                                </a>
+                                            </li>
+                                            <!-- MENU ITEM : end -->
+    
+                                            <!-- MENU ITEM : begin -->
+                                            <li class="header-menu-primary__item header-menu-primary__item--level-1" role="presentation">
+                                                <a href="listing-archive.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-1" role="menuitem">
+                                                    <span class="header-menu-primary__item-link-label">Kuģi pie Kolkas</span>
+                                                </a>
+                                            </li>
+                                            <!-- MENU ITEM : end -->
+    
+                                            <!-- MENU ITEM : begin -->
+                                            <li class="header-menu-primary__item header-menu-primary__item--level-1" role="presentation">
+                                                <a href="listing-archive.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-1" role="menuitem">
+                                                    <span class="header-menu-primary__item-link-label">Pamatskola</span>
+                                                </a>
+                                            </li>
+                                            <!-- MENU ITEM : end -->
+    
+                                            <!-- MENU ITEM : begin -->
+                                            <li class="header-menu-primary__item header-menu-primary__item--level-1" role="presentation">
+                                                <a href="listing-archive.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-1" role="menuitem">
+                                                    <span class="header-menu-primary__item-link-label">Tautasnams</span>
+                                                </a>
+                                            </li>
+                                            <!-- MENU ITEM : end -->
+    
+                                            <!-- MENU ITEM : begin -->
+                                            <li class="header-menu-primary__item header-menu-primary__item--level-1" role="presentation">
+                                                <a href="listing-archive.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-1" role="menuitem">
+                                                    <span class="header-menu-primary__item-link-label">Citi par Kolku</span>
+                                                </a>
+                                            </li>
+                                            <!-- MENU ITEM : end -->
+    
+                                            <!-- MENU ITEM : begin -->
+                                            <li class="header-menu-primary__item header-menu-primary__item--level-1 header-menu-primary__item--has-children header-menu-primary__item--megamenu" role="presentation">
+    
+                                                <a href="blog-archive.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-1"
+                                                    role="menuitem" aria-haspopup="true" aria-expanded="false">
+                                                    <span class="header-menu-primary__item-link-label">Vairāk</span>
+                                                    <span class="header-menu-primary__item-link-icon" aria-hidden="true"></span>
+                                                    <span class="header-menu-primary__item-link-indicator" aria-hidden="true"></span>
+                                                </a>
+    
+                                                <button class="header-menu-primary__submenu-toggle header-menu-primary__submenu-toggle--level-1"
+                                                    type="button" title="Expand submenu" aria-haspopup="true" aria-expanded="false">
+                                                    <span class="header-menu-primary__submenu-toggle-icon" aria-hidden="true"></span>
+                                                </button>
+    
+                                                <!-- MENU LEVEL 2 WRAPPER : begin -->
+                                                <div class="header-menu-primary__submenu-wrapper header-menu-primary__submenu-wrapper--level-2"
+                                                    role="group" aria-expanded="false">
+                                                    <div class="header-menu-primary__submenu-wrapper-inner header-menu-primary__submenu-wrapper-inner--level-2">
+                                                        <div class="header-menu-primary__submenu-wrapper-inner2 header-menu-primary__submenu-wrapper-inner2--level-2">
+                                                            <div class="header-menu-primary__submenu-wrapper-inner3 header-menu-primary__submenu-wrapper-inner3--level-2">
+    
+                                                                <!-- MENU LEVEL 2 : begin -->
+                                                                <ul class="header-menu-primary__submenu header-menu-primary__submenu--level-2" role="menu">
+    
+                                                                    <!-- MENU ITEM : begin -->
+                                                                    <li class="header-menu-primary__item header-menu-primary__item--level-2 header-menu-primary__item--has-children" role="presentation">
+    
+                                                                        <a href="blog-archive.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-2"
+                                                                            role="menuitem" aria-haspopup="true" aria-expanded="false">
+                                                                            <span class="header-menu-primary__item-link-label">Informācija</span>
+                                                                            <span class="header-menu-primary__item-link-icon" aria-hidden="true"></span>
+                                                                        </a>
+    
+                                                                        <button class="header-menu-primary__submenu-toggle header-menu-primary__submenu-toggle--level-2"
+                                                                            type="button" title="Expand submenu" aria-haspopup="true" aria-expanded="false">
+                                                                            <span class="header-menu-primary__submenu-toggle-icon" aria-hidden="true"></span>
+                                                                        </button>
+    
+                                                                        <!-- MENU LEVEL 3 WRAPPER : begin -->
+                                                                        <div class="header-menu-primary__submenu-wrapper header-menu-primary__submenu-wrapper--level-1"
+                                                                            role="group" aria-expanded="false">
+                                                                            <div class="header-menu-primary__submenu-wrapper-inner header-menu-primary__submenu-wrapper-inner--level-3">
+                                                                                <div class="header-menu-primary__submenu-wrapper-inner2 header-menu-primary__submenu-wrapper-inner2--level-3">
+                                                                                    <div class="header-menu-primary__submenu-wrapper-inner3 header-menu-primary__submenu-wrapper-inner3--level-3">
+    
+                                                                                        <!-- MENU LEVEL 3 : begin -->
+                                                                                        <ul class="header-menu-primary__submenu sub-menu header-menu-primary__submenu--level-3" role="menu">
+    
+                                                                                            <!-- MENU ITEM : begin -->
+                                                                                            <li class="header-menu-primary__item header-menu-primary__item--level-3" role="presentation">
+                                                                                                <a href="event-archive.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-3"
+                                                                                                    role="menuitem">
+                                                                                                    <span class="header-menu-primary__item-link-label">Kartes</span>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <!-- MENU ITEM : end -->
+    
+                                                                                            <!-- MENU ITEM : begin -->
+                                                                                            <li class="header-menu-primary__item header-menu-primary__item--level-3" role="presentation">
+                                                                                                <a href="listing-archive.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-3"
+                                                                                                    role="menuitem">
+                                                                                                    <span class="header-menu-primary__item-link-label">Autobusu saraksti</span>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <!-- MENU ITEM : end -->
+    
+                                                                                            <!-- MENU ITEM : begin -->
+                                                                                            <li class="header-menu-primary__item header-menu-primary__item--level-3" role="presentation">
+                                                                                                <a href="document-archive.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-3"
+                                                                                                    role="menuitem">
+                                                                                                    <span class="header-menu-primary__item-link-label">Naktsmītnes</span>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <!-- MENU ITEM : end -->
+    
+                                                                                            <!-- MENU ITEM : begin -->
+                                                                                            <li class="header-menu-primary__item header-menu-primary__item--level-3" role="presentation">
+                                                                                                <a href="faq-archive.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-3"
+                                                                                                    role="menuitem">
+                                                                                                    <span class="header-menu-primary__item-link-label">Veselība</span>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <!-- MENU ITEM : end -->
+    
+                                                                                            <!-- MENU ITEM : begin -->
+                                                                                            <li class="header-menu-primary__item header-menu-primary__item--level-3" role="presentation">
+                                                                                                <a href="faq-archive.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-3"
+                                                                                                    role="menuitem">
+                                                                                                    <span class="header-menu-primary__item-link-label">Baznīcas</span>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <!-- MENU ITEM : end -->
+    
+                                                                                        </ul>
+                                                                                        <!-- MENU LEVEL 3 : end -->
+    
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- MENU LEVEL 3 WRAPPER : end -->
+    
+                                                                    </li>
+                                                                    <!-- MENU ITEM : end -->
+    
+                                                                    <!-- MENU ITEM : begin -->
+                                                                    <li class="header-menu-primary__item header-menu-primary__item--level-2 header-menu-primary__item--has-children" role="presentation">
+    
+                                                                        <a href="service-archive.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-2"
+                                                                            role="menuitem" aria-haspopup="true" aria-expanded="false">
+                                                                            <span class="header-menu-primary__item-link-label">Galerija</span>
+                                                                            <span class="header-menu-primary__item-link-icon" aria-hidden="true"></span>
+                                                                        </a>
+    
+                                                                        <button class="header-menu-primary__submenu-toggle header-menu-primary__submenu-toggle--level-2"
+                                                                            type="button" title="Expand submenu" aria-haspopup="true" aria-expanded="false">
+                                                                            <span class="header-menu-primary__submenu-toggle-icon" aria-hidden="true"></span>
+                                                                        </button>
+    
+                                                                        <!-- MENU LEVEL 3 WRAPPER : begin -->
+                                                                        <div class="header-menu-primary__submenu-wrapper header-menu-primary__submenu-wrapper--level-1"
+                                                                            role="group" aria-expanded="false">
+                                                                            <div class="header-menu-primary__submenu-wrapper-inner header-menu-primary__submenu-wrapper-inner--level-3">
+                                                                                <div class="header-menu-primary__submenu-wrapper-inner2 header-menu-primary__submenu-wrapper-inner2--level-3">
+                                                                                    <div class="header-menu-primary__submenu-wrapper-inner3 header-menu-primary__submenu-wrapper-inner3--level-3">
+    
+                                                                                        <!-- MENU LEVEL 3 : begin -->
+                                                                                        <ul class="header-menu-primary__submenu sub-menu header-menu-primary__submenu--level-3" role="menu">
+    
+                                                                                            <!-- MENU ITEM : begin -->
+                                                                                            <li class="header-menu-primary__item header-menu-primary__item--level-3" role="presentation">
+                                                                                                <a href="service-archive.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-3"
+                                                                                                    role="menuitem">
+                                                                                                    <span class="header-menu-primary__item-link-label">Foto</span>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <!-- MENU ITEM : end -->
+    
+                                                                                            <!-- MENU ITEM : begin -->
+                                                                                            <li class="header-menu-primary__item header-menu-primary__item--level-3" role="presentation">
+                                                                                                <a href="person-archive.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-3"
+                                                                                                    role="menuitem">
+                                                                                                    <span class="header-menu-primary__item-link-label">Video</span>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <!-- MENU ITEM : end -->
+    
+                                                                                        </ul>
+                                                                                        <!-- MENU LEVEL 3 : end -->
+    
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- MENU LEVEL 3 WRAPPER : end -->
+    
+                                                                    </li>
+                                                                    <!-- MENU ITEM : end -->
+    
+                                                                    <!-- MENU ITEM : begin -->
+                                                                    <li class="header-menu-primary__item header-menu-primary__item--level-2 header-menu-primary__item--has-children" role="presentation">
+    
+                                                                        <a href="contact.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-2"
+                                                                            role="menuitem" aria-haspopup="true" aria-expanded="false">
+                                                                            <span class="header-menu-primary__item-link-label">Kolkas pagasta pārvalde</span>
+                                                                            <span class="header-menu-primary__item-link-icon" aria-hidden="true"></span>
+                                                                        </a>
+    
+                                                                        <button class="header-menu-primary__submenu-toggle header-menu-primary__submenu-toggle--level-2"
+                                                                            type="button" title="Expand submenu" aria-haspopup="true" aria-expanded="false">
+                                                                            <span class="header-menu-primary__submenu-toggle-icon" aria-hidden="true"></span>
+                                                                        </button>
+    
+                                                                        <!-- MENU LEVEL 3 WRAPPER : begin -->
+                                                                        <div class="header-menu-primary__submenu-wrapper header-menu-primary__submenu-wrapper--level-1"
+                                                                            role="group" aria-expanded="false">
+                                                                            <div class="header-menu-primary__submenu-wrapper-inner header-menu-primary__submenu-wrapper-inner--level-3">
+                                                                                <div class="header-menu-primary__submenu-wrapper-inner2 header-menu-primary__submenu-wrapper-inner2--level-3">
+                                                                                    <div class="header-menu-primary__submenu-wrapper-inner3 header-menu-primary__submenu-wrapper-inner3--level-3">
+    
+                                                                                        <!-- MENU LEVEL 3 : begin -->
+                                                                                        <ul class="header-menu-primary__submenu sub-menu header-menu-primary__submenu--level-3" role="menu">
+    
+                                                                                            <!-- MENU ITEM : begin -->
+                                                                                            <li class="header-menu-primary__item header-menu-primary__item--level-3" role="presentation">
+                                                                                                <a href="contact.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-3"
+                                                                                                    role="menuitem">
+                                                                                                    <span class="header-menu-primary__item-link-label">Rekvizīti</span>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <!-- MENU ITEM : end -->
+    
+                                                                                            <!-- MENU ITEM : begin -->
+                                                                                            <li class="header-menu-primary__item header-menu-primary__item--level-3" role="presentation">
+                                                                                                <a href="typography.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-3"
+                                                                                                    role="menuitem">
+                                                                                                    <span class="header-menu-primary__item-link-label">Darba laiks</span>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <!-- MENU ITEM : end -->
+    
+                                                                                            <!-- MENU ITEM : begin -->
+                                                                                            <li class="header-menu-primary__item header-menu-primary__item--level-3" role="presentation">
+                                                                                                <a href="sidebar-left.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-3"
+                                                                                                    role="menuitem">
+                                                                                                    <span class="header-menu-primary__item-link-label">Kontakti</span>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <!-- MENU ITEM : end -->
+    
+                                                                                            <!-- MENU ITEM : begin -->
+                                                                                            <li class="header-menu-primary__item header-menu-primary__item--level-3" role="presentation">
+                                                                                                <a href="sidebar-right.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-3"
+                                                                                                    role="menuitem">
+                                                                                                    <span class="header-menu-primary__item-link-label">Dokumenti</span>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <!-- MENU ITEM : end -->
+                                                                                            <!-- MENU ITEM : begin -->
+                                                                                            <li class="header-menu-primary__item header-menu-primary__item--level-3" role="presentation">
+                                                                                                <a href="sidebar-right.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-3"
+                                                                                                    role="menuitem">
+                                                                                                    <span class="header-menu-primary__item-link-label">Ciema valde</span>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <!-- MENU ITEM : end -->
+                                                                                            <!-- MENU ITEM : begin -->
+                                                                                            <li class="header-menu-primary__item header-menu-primary__item--level-3" role="presentation">
+                                                                                                <a href="sidebar-right.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-3"
+                                                                                                    role="menuitem">
+                                                                                                    <span class="header-menu-primary__item-link-label">Sludinājumi</span>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <!-- MENU ITEM : end -->
+    
+                                                                                        </ul>
+                                                                                        <!-- MENU LEVEL 3 : end -->
+    
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- MENU LEVEL 3 WRAPPER : end -->
+    
+                                                                    </li>
+                                                                    <!-- MENU ITEM : end -->
+    
+                                                                    <!-- MENU ITEM : begin -->
+                                                                    <li class="header-menu-primary__item header-menu-primary__item--level-2 header-menu-primary__item--has-children" role="presentation">
+    
+                                                                        <a href="https://themeforest.net/user/lsvrthemes/portfolio" class="header-menu-primary__item-link header-menu-primary__item-link--level-2"
+                                                                            role="menuitem" aria-haspopup="true" aria-expanded="false">
+                                                                            <span class="header-menu-primary__item-link-label">Lībieši</span>
+                                                                            <span class="header-menu-primary__item-link-icon" aria-hidden="true"></span>
+                                                                        </a>
+    
+                                                                        <button class="header-menu-primary__submenu-toggle header-menu-primary__submenu-toggle--level-2"
+                                                                            type="button" title="Expand submenu" aria-haspopup="true" aria-expanded="false">
+                                                                            <span class="header-menu-primary__submenu-toggle-icon" aria-hidden="true"></span>
+                                                                        </button>
+    
+                                                                        <!-- MENU LEVEL 3 WRAPPER : begin -->
+                                                                        <div class="header-menu-primary__submenu-wrapper header-menu-primary__submenu-wrapper--level-1"
+                                                                            role="group" aria-expanded="false">
+                                                                            <div class="header-menu-primary__submenu-wrapper-inner header-menu-primary__submenu-wrapper-inner--level-3">
+                                                                                <div class="header-menu-primary__submenu-wrapper-inner2 header-menu-primary__submenu-wrapper-inner2--level-3">
+                                                                                    <div class="header-menu-primary__submenu-wrapper-inner3 header-menu-primary__submenu-wrapper-inner3--level-3">
+    
+                                                                                        <!-- MENU LEVEL 3 : begin -->
+                                                                                        <ul class="header-menu-primary__submenu sub-menu header-menu-primary__submenu--level-3" role="menu">
+    
+                                                                                            <!-- MENU ITEM : begin -->
+                                                                                            <li class="header-menu-primary__item header-menu-primary__item--level-3" role="presentation">
+                                                                                                <a href="https://themeforest.net/user/lsvrthemes/portfolio" class="header-menu-primary__item-link header-menu-primary__item-link--level-3"
+                                                                                                    role="menuitem">
+                                                                                                    <span class="header-menu-primary__item-link-label">Līvu tautas simboli</span>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <!-- MENU ITEM : end -->
+    
+                                                                                            <!-- MENU ITEM : begin -->
+                                                                                            <li class="header-menu-primary__item header-menu-primary__item--level-3" role="presentation">
+                                                                                                <a href="http://docs.lsvr.sk/wordbench.html" class="header-menu-primary__item-link header-menu-primary__item-link--level-3"
+                                                                                                    role="menuitem">
+                                                                                                    <span class="header-menu-primary__item-link-label">Lībiešu tautas nams</span>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <!-- MENU ITEM : end -->
+    
+                                                                                            <!-- MENU ITEM : begin -->
+                                                                                            <li class="header-menu-primary__item header-menu-primary__item--level-3" role="presentation">
+                                                                                                <a href="https://themeforest.net/user/lsvrthemes/portfolio" class="header-menu-primary__item-link header-menu-primary__item-link--level-3"
+                                                                                                    role="menuitem">
+                                                                                                    <span class="header-menu-primary__item-link-label">Līvu savienība</span>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <!-- MENU ITEM : end -->
+    
+                                                                                            <!-- MENU ITEM : begin -->
+                                                                                            <li class="header-menu-primary__item header-menu-primary__item--level-3" role="presentation">
+                                                                                                <a href="../wordbench.rtl" class="header-menu-primary__item-link header-menu-primary__item-link--level-3"
+                                                                                                    role="menuitem">
+                                                                                                    <span class="header-menu-primary__item-link-label">Līvu centrs</span>
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <!-- MENU ITEM : end -->
+    
+                                                                                        </ul>
+                                                                                        <!-- MENU LEVEL 3 : end -->
+    
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- MENU LEVEL 3 WRAPPER : end -->
+    
+                                                                    </li>
+                                                                    <!-- MENU ITEM : end -->
+    
+                                                                </ul>
+                                                                <!-- MENU LEVEL 2 : end -->
+    
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- MENU LEVEL 2 WRAPPER : end -->
+    
+                                            </li>
+                                            <!-- MENU ITEM : end -->
+    
+                                        </ul>
+                                        <!-- MENU LEVEL 1 : end -->
+    
+                                    </nav>
+                                    <!-- PRIMARY HEADER MENU : end -->
+    
+    
+                                </div>
+                                <!-- HEADER NAVBAR MENU : end -->
+    
+                            </div>
+                        </div>
+                        <!-- HEADER NAVBAR : end -->
+    
+                    </div>
+                </header>
+            <div class="container">
+              <div class="title">
+                <h3>Paragrāfi</h3>
+              </div>
+              <div class="row">
+                   
+                    <div class="col-lg-8 col-md-10 ml-auto mr-auto">
+                    <h4><small>Paragrāfu panelis</small></h4>
+                        <div class="table-responsive">
+                            <button type="button" rel="tooltip" class="btn btn-info btn-sm" data-original-title="" title="">
+                                <i class="">Pievienot Paragrāfu</i>
+                            </button>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th>Virsraksts</th>
+                                    <th>Paragrāfs</th>
+                                    <th>Bilde</th>
+                                    <th class="text-right">Publicēšanas laiks</th>
+                                    <th class="text-right">Opcijas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center"><input class="form-check-input" type="checkbox" value="" checked="">1</td>
+                                    <td>Vastlāvju diena</td>
+                                    <td>5. februārī Kolkā notika ansambļa...</td>
+                                    <td>Attēls</td>
+                                    <td class="text-right">02.21.2022 13:50</td>
+                                    <td class="td-actions text-right">
+                                        <button type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" data-original-title="" title="">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button type="button" rel="tooltip" class="btn btn-danger btn-just-icon btn-sm" data-original-title="" title="">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </td>
+                                  </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                 </div>
+                
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
+            <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+            <script src="assets/js/jquery-3.6.0.min.js"></script>
+		<script src="assets/js/wordbench-third-party-scripts.min.js"></script>
+		<script src="assets/js/wordbench-scripts.js"></script>
+        </body>
