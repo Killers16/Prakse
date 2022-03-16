@@ -1,10 +1,13 @@
+<?php
+		include("database_config.php");
+		?>
 <!DOCTYPE html>
 <html lang="en-US">
 	<head>
 
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Blog Detail | Wordbench - Municipality HTML Template</title>
+        <title>Kolka</title>
         <link rel="shortcut icon" href="images/favicon.ico">
 
         <!-- STYLESHEETS : begin -->
@@ -23,7 +26,7 @@
 			<a href="#header-menu-primary" class="accessibility-link accessibility-link--skip-to-nav screen-reader-text">Skip to main navigation</a>
 			<a href="#footer" class="accessibility-link accessibility-link--skip-to-footer screen-reader-text">Skip to footer</a>
 
-			<?php
+		<?php
 		require 'header.html';
 		?>
 
@@ -39,7 +42,7 @@
 							<!-- MAIN : begin -->
 							<main id="main">
 								<div class="main__inner">
-
+							
 									<!-- MAIN IMAGE : begin -->
 									<div class="main-image main-image--cropped main-image--parallax" data-parallax-speed="2">
 										<p class="main-image__inner" style="background-image: url( 'content/blog_01.jpg' );">
