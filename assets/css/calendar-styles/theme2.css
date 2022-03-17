@@ -1,22 +1,27 @@
 .cld-main{
   width: 400px;
 	padding-top: 20px; 
+ 
+   
+}
+.home1{
   border-radius: 20px;
   border-top: 1px solid black;
   border-right: 1px solid black;
   border-left: 1px solid black;
-   
 }
-
 .home2 {
   width: 401px;
   border-radius: 20px; 
-  background: white;  
+  background: white;
+    
 }
-.cld-days{
+.home1 .cld-days {
   border-bottom: 1px solid black;
   border-radius: 20px;
 }
+
+
 .cld-main a{
   color: #0080FF;
   
@@ -38,8 +43,7 @@
     float: left;
     width: calc(100% - 40px);
     margin: auto;
-    text-align: center;
-    margin-bottom: 10px;
+    text-align: center;  
   }
   .cld-nav{
     position: relative;
@@ -64,6 +68,7 @@
     }
 .cld-labels, .cld-days{
   padding-left: 0;
+  
 }
   .cld-label, .cld-day{
     box-sizing: border-box;
@@ -107,6 +112,7 @@
       }
       .cld-number:hover .cld-title{
         display: block;
+        
       }
       .cld-title::before{
         content: '';

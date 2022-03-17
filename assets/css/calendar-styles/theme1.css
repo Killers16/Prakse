@@ -29,10 +29,7 @@
    border-left: 1px solid black;
    
  }
- .cld-days{
-   border-bottom: 1px solid black;
-   border-radius: 20px;
-   } 
+ 
 
 
   .cld-datetime{
@@ -42,6 +39,7 @@
     max-width: 300px;
     margin: auto;
     overflow: hidden;
+    margin-bottom: 15px;
   }
   .cld-datetime .today{
     position: relative;
@@ -73,6 +71,7 @@
     }
 .cld-labels, .cld-days{
   padding-left: 0;
+  
 }
   .cld-label, .cld-day{
     display: inline-block;
@@ -81,9 +80,9 @@
   }
   .cld-day.today .cld-number{
     display: inline-block;
-    height: 20px;
-    width: 20px;
-    border-radius: 50px;
+    height: 24px;
+    width: 25px;
+    border-radius: 20px;
     background: #666;
     color: #fff;
   }
@@ -128,9 +127,9 @@
       }
       .cld-number.eventday{
         display: inline-block;
-        height: 20px;
-        width: 20px;
-        border-radius: 50px;
+        height: 25px;
+        width: 25px;
+        border-radius: 20px;
         border: 1px solid #999;
       }
       .cld-number.eventday:hover{
@@ -139,4 +138,5 @@
       }
       .today .cld-number.eventday:hover{
         background: #888;
+        
       }

@@ -1,10 +1,25 @@
 .cld-main{
   width: 660px;
-  
+  padding-top: 15px; 
+  margin-top: -90px; 
+  border-radius: 20px;
+
 }
 .cld-main a{
   color: #7B00FF;
 }
+.home1 .cld-main{
+  border: 1px solid black;
+  padding-bottom: 55%; 
+  border-radius: 20px;
+  }
+  .home2 .cld-main{
+    
+    padding-bottom: 26%; 
+    border-radius: 20px;
+    background:white;
+    }
+
   .cld-datetime{
     position: relative;
     width: 66%;
@@ -43,12 +58,14 @@
     }
 .cld-labels, .cld-days{
   padding-left: 0;
+  padding-top:15px;
 }
   .cld-label, .cld-day{
     box-sizing: border-box;
     display: inline-block;
     width: 14.28%;
     text-align: center;
+    
   }
   .cld-day{
     display: block;
@@ -59,6 +76,7 @@
     height: 66px;
     border: 1px solid #ddd;
     overflow-y: auto;
+    border-radius: 15px;
   }
   .cld-day.clickable:hover{
     cursor: pointer;
@@ -88,6 +106,7 @@
       .cld-number.eventday{
         font-weight: bold;
       }
+      
       .cld-number.eventday:hover{
         background: #eee;
       }
