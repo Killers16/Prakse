@@ -2,7 +2,7 @@
 session_start();
 $hostname= "localhost";
 $user = "root";
-$password= "";
+$password= "root";
 $database = "db_kolka";
 
 $conn = new mysqli($hostname, $user, $password, $database);
