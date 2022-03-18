@@ -72,9 +72,38 @@
                                         <button type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" data-original-title="" title="">
                                             <i class="material-icons">edit</i>
                                         </button>
-                                        <button type="button" rel="tooltip" class="btn btn-danger btn-just-icon btn-sm" data-original-title="" title="">
-                                            <i class="material-icons">close</i>
+                                        <button type="button" rel="tooltip" name="deleteBlog" class="btn btn-danger btn-just-icon btn-sm" data-original-title="" title="">
+                                            <i class="material-icons" >close</i>
                                         </button>
+                                        <?php
+                                        if(isset($_GET['updateBlog'])){
+                                            if($_GET['title'] != "" && $_GET['content'] != ""){
+                                                $paragraph = $_GET['paragraph'];
+                                                $oldTitle = explode(" ", $paragraph)[0];
+                                                $oldContent = explode(" ", $paragraph)[1];
+                                                
+                                                $newTitle = $_GET['title'];
+                                                $newContent = $_GET['title'];
+                                                
+                                                $id = $blog_service->getBlogID($conn, $oldTitle, $oldContent);
+                                                
+                                                $info = $blog_service->updateBlog($conn, $id, $newTitle, $newContent);
+                                            }
+                                            
+                                            header('Location: index.php');
+                                        }
+                                        if(isset($_GET['deleteBlog'])){
+                                              $paragraph = $_GET['paragraph'];
+                                              $title = explode(" ", $paragraph)[0];
+                                              $content = explode(" ", $paragraph)[1];
+                        
+                                              $id = $blog_service->getBlogID($conn, $title, $content);
+                        
+                                             $info = $blog_service->deleteBlog($conn, $id);
+                    
+                                             header('Location: admin-panel.php');
+                                             }
+                                         ?>
                                     </td>
                                   </tr>
                             </tbody>
