@@ -1,24 +1,27 @@
 .cld-main{
   width: 400px;
 	padding-top: 20px; 
+ border: 1px solid black;
+ border-radius: 20px;
  
-   
 }
-.home1{
-  border-radius: 20px;
-  border-top: 1px solid black;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
-}
+
+
 .home2 {
   width: 401px;
   border-radius: 20px; 
   background: white;
-    
+  
 }
+
+.home2 .cld-days{
+  margin-bottom: 0px;
+  
+}
+
 .home1 .cld-days {
-  border-bottom: 1px solid black;
-  border-radius: 20px;
+  
+  margin-bottom: 0px;
 }
 
 
@@ -36,7 +39,7 @@
     max-width: 300px;
     margin: auto;
     overflow: hidden;
-    
+    margin-bottom: 10px;
   }
   .cld-datetime .today{
     position: relative;
