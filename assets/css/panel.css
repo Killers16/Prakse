@@ -18,6 +18,14 @@ a:focus {
     color: #89229b !important;
     text-decoration: none !important;
 }
+.line-limit {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+            line-clamp: 2; 
+    -webkit-box-orient: vertical;
+ }
 .container h3{
     font-size:25px ;
     margin-top: 20px ;
