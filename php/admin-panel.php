@@ -42,17 +42,17 @@
       </a>
     </li>
     <li>
-      <a href="../index.html">
+      <a href="../blog-archive.html">
         <i class="fa fa-home" aria-hidden="true"></i> Paragrāfi
       </a>
     </li>
     <li>
-      <a href="../index.html">
+      <a href="../event-archive.html">
         <i class="fa fa-home" aria-hidden="true"></i> Aktivitātes
       </a>
     </li>
     <li>
-      <a href="../index.html">
+      <a href="../gallery-archive.html">
         <i class="fa fa-home" aria-hidden="true"></i> Galerija
       </a>
     </li>
@@ -74,7 +74,12 @@
     </li>
     <li>
       <a onclick="openTab(event, 'category-container')" class="tablink2">
-        <i class="fa fa-cog" aria-hidden="true"></i> Kategorijas
+        <i class="fa fa-cog" aria-hidden="true"></i> Paragrāfu Kategorijas
+      </a>
+    </li>
+    <li>
+      <a onclick="openTab(event, 'act-container')" class="tablink2">
+        <i class="fa fa-cog" aria-hidden="true"></i> Aktivitāšu Kategorijas
       </a>
     </li>
   </ul>
@@ -224,6 +229,126 @@
     </div>
                         </div>
     <!-- Activitie container end-->
+    <!-- BLG_Category container start-->
+    <div class="container tab" id="category-container" style="display: none;">
+              <div class="title">
+                <h3>Paragrāfu kategorijas</h3>
+              </div>
+              <div class="row">
+                   
+                    <div class="col-lg-16 col-md-10 ml-auto mr-auto">
+                        <div class="table-responsive">
+                            <a type="button" rel="tooltip" class="btn btn-info btn-sm" data-original-title="" title="" href="add-category.php">
+                                <i class="">Pievienot Kategoriju</i>
+                            </a>
+                            <?php
+                                $result = mysqli_query($conn,"SELECT * FROM blg_category");
+                            ?>
+                            <?php
+                                if (mysqli_num_rows($result) > 0) {
+                            ?>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Nosaukums</th>
+                                    <th class="text-right">Opcijas</th>
+                                </tr>
+                            </thead>
+                            <?php
+                                $i=0;
+                                while($row = mysqli_fetch_array($result)) {
+                            ?>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center"><input class="form-check-input" type="checkbox" value=""><?php echo $row["id_category"]; ?></td>
+                                    <td><?php echo $row["cname"]; ?></td>
+                                    <td class="td-actions text-right">
+                                        <a href="edit-activities.php?id=<?php echo $row["id_category"] ?>" type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" data-original-title="" title="">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                        <a href="delete-activities.php?id=<?php echo $row["id_category"] ?>" type="button" rel="tooltip" name="deleteBlog" class="btn btn-danger btn-just-icon btn-sm" data-original-title="" title="">
+                                            <i class="material-icons" >delete</i>
+                                        </a>
+                                    </td>
+                                  </tr>
+                            </tbody>
+                            <?php
+                                $i++;
+                                }
+                            ?>
+                        </table>
+                        <?php
+                            }
+                            else{
+                            echo "No result found";
+                            }
+                        ?>
+                    </div>
+                 </div>
+    </div>
+                        </div>
+    <!-- Category container end-->
+    <!-- BLG_Category container start-->
+    <div class="container tab" id="act-container" style="display: none;">
+              <div class="title">
+                <h3>Aktivitāšu kategorijas</h3>
+              </div>
+              <div class="row">
+                   
+                    <div class="col-lg-16 col-md-10 ml-auto mr-auto">
+                        <div class="table-responsive">
+                            <a type="button" rel="tooltip" class="btn btn-info btn-sm" data-original-title="" title="" href="add-category.php">
+                                <i class="">Pievienot Kategoriju</i>
+                            </a>
+                            <?php
+                                $result = mysqli_query($conn,"SELECT * FROM act_category");
+                            ?>
+                            <?php
+                                if (mysqli_num_rows($result) > 0) {
+                            ?>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Nosaukums</th>
+                                    <th class="text-right">Opcijas</th>
+                                </tr>
+                            </thead>
+                            <?php
+                                $i=0;
+                                while($row = mysqli_fetch_array($result)) {
+                            ?>
+                            <tbody>
+                                <tr>
+                                    <td class="text-center"><input class="form-check-input" type="checkbox" value=""><?php echo $row["id_category"]; ?></td>
+                                    <td><?php echo $row["cname"]; ?></td>
+                                    <td class="td-actions text-right">
+                                        <a href="edit-activities.php?id=<?php echo $row["id_category"] ?>" type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" data-original-title="" title="">
+                                            <i class="material-icons">edit</i>
+                                        </a>
+                                        <a href="delete-activities.php?id=<?php echo $row["id_category"] ?>" type="button" rel="tooltip" name="deleteBlog" class="btn btn-danger btn-just-icon btn-sm" data-original-title="" title="">
+                                            <i class="material-icons" >delete</i>
+                                        </a>
+                                    </td>
+                                  </tr>
+                            </tbody>
+                            <?php
+                                $i++;
+                                }
+                            ?>
+                        </table>
+                        <?php
+                            }
+                            else{
+                            echo "No result found";
+                            }
+                        ?>
+                    </div>
+                 </div>
+    </div>
+                        </div>
+    <!-- Category container end-->
     
                         </div>
   </div>
