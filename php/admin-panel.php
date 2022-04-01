@@ -99,7 +99,7 @@
                    
                     <div class="col-lg-16 col-md-10 ml-auto mr-auto">
                         <div class="table-responsive">
-                            <a type="button" rel="tooltip" class="btn btn-info btn-sm" data-original-title="" title="" href="add-paragraph.php">
+                            <a type="button" rel="tooltip" class="btn btn-info btn-sm" data-original-title="" title="" href="crud/add-paragraph.php">
                                 <i class="">Pievienot Paragrāfu</i>
                             </a>
                             <?php
@@ -130,13 +130,13 @@
                                     <td><?php echo $row["title"]; ?></td>
                                     <td><p class="line-limit"><?php echo $row["content"]; ?></p></td>
                                     <td><p class="text-center"><?php echo $row["blog_author"]; ?></p></td>
-                                    <td class="text-center"><?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row['picture']).'"/>'; ?></td>
+                                    <td class="text-center"><?php echo '<img height="100px" width="100px" src="data:image/png;base64,' . $row['picture'] . '" />'; ?></td>
                                     <td class="text-center"><?php echo $row["created_at"]; ?></td>
                                     <td class="td-actions text-right">
-                                        <a href="edit-paragraph.php?id=<?php echo $row["id_blogs"] ?>" type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" data-original-title="" title="">
+                                        <a href="crud/edit-paragraph.php?id=<?php echo $row["id_blogs"] ?>" type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" data-original-title="" title="">
                                             <i class="material-icons">edit</i>
                                         </a>
-                                        <a href="delete-paragraph.php?id=<?php echo $row["id_blogs"] ?>" type="button" rel="tooltip" name="deleteBlog" class="btn btn-danger btn-just-icon btn-sm" data-original-title="" title="">
+                                        <a href="crud/delete-paragraph.php?id=<?php echo $row["id_blogs"] ?>" type="button" rel="tooltip" name="deleteBlog" class="btn btn-danger btn-just-icon btn-sm" data-original-title="" title="">
                                             <i class="material-icons" >delete</i>
                                         </a>
                                     </td>
@@ -168,7 +168,7 @@
                    
                     <div class="col-lg-16 col-md-10 ml-auto mr-auto">
                         <div class="table-responsive">
-                            <a type="button" rel="tooltip" class="btn btn-info btn-sm" data-original-title="" title="" href="add-activitie.php">
+                            <a type="button" rel="tooltip" class="btn btn-info btn-sm" data-original-title="" title="" href="crud/add-activitie.php">
                                 <i class="">Pievienot Aktivitāti</i>
                             </a>
                             <?php
@@ -201,13 +201,13 @@
                                     <td><p class="text-center"><?php echo $row["opened_at"]; ?></p></td>
                                     <td><p class="text-center"><?php echo $row["closed_at"]; ?></p></td>
                                     <td><p class="line-limit"><?php echo $row["content"]; ?></p></td>
-                                    <td class="text-center"><?php echo '<img src="data:image/jpeg;base64,'.base64_encode($row['picture']).'"/>'; ?></td>
+                                    <td class="text-center"><?php echo '<img height="100px" width="100px" src="data:image/png;base64,' . $row['picture'] . '" />'; ?></td>
                                     <td><p class="text-center"><?php echo $row["category_id"]; ?></p></td>
                                     <td class="td-actions text-right">
-                                        <a href="edit-activities.php?id=<?php echo $row["id_activities"] ?>" type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" data-original-title="" title="">
+                                        <a href="crud/edit-activitie.php?id=<?php echo $row["id_activities"] ?>" type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" data-original-title="" title="">
                                             <i class="material-icons">edit</i>
                                         </a>
-                                        <a href="delete-activities.php?id=<?php echo $row["id_activities"] ?>" type="button" rel="tooltip" name="deleteBlog" class="btn btn-danger btn-just-icon btn-sm" data-original-title="" title="">
+                                        <a href="crud/delete-activitie.php?id=<?php echo $row["id_activities"] ?>" type="button" rel="tooltip" name="deleteBlog" class="btn btn-danger btn-just-icon btn-sm" data-original-title="" title="">
                                             <i class="material-icons" >delete</i>
                                         </a>
                                     </td>
@@ -238,7 +238,7 @@
                    
                     <div class="col-lg-16 col-md-10 ml-auto mr-auto">
                         <div class="table-responsive">
-                            <a type="button" rel="tooltip" class="btn btn-info btn-sm" data-original-title="" title="" href="add-category.php">
+                            <a type="button" rel="tooltip" class="btn btn-info btn-sm" data-original-title="" title="" href="crud/add-blg-category.php">
                                 <i class="">Pievienot Kategoriju</i>
                             </a>
                             <?php
@@ -251,7 +251,7 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">#</th>
-                                    <th class="text-center">Nosaukums</th>
+                                    <th class="text-left">Nosaukums</th>
                                     <th class="text-right">Opcijas</th>
                                 </tr>
                             </thead>
@@ -264,10 +264,10 @@
                                     <td class="text-center"><input class="form-check-input" type="checkbox" value=""><?php echo $row["id_category"]; ?></td>
                                     <td><?php echo $row["cname"]; ?></td>
                                     <td class="td-actions text-right">
-                                        <a href="edit-activities.php?id=<?php echo $row["id_category"] ?>" type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" data-original-title="" title="">
+                                        <a href="crud/edit-blg-category.php?id=<?php echo $row["id_category"] ?>" type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" data-original-title="" title="">
                                             <i class="material-icons">edit</i>
                                         </a>
-                                        <a href="delete-activities.php?id=<?php echo $row["id_category"] ?>" type="button" rel="tooltip" name="deleteBlog" class="btn btn-danger btn-just-icon btn-sm" data-original-title="" title="">
+                                        <a href="crud/delete-blg-category.php?id=<?php echo $row["id_category"] ?>" type="button" rel="tooltip" name="deleteBlog" class="btn btn-danger btn-just-icon btn-sm" data-original-title="" title="">
                                             <i class="material-icons" >delete</i>
                                         </a>
                                     </td>
@@ -298,7 +298,7 @@
                    
                     <div class="col-lg-16 col-md-10 ml-auto mr-auto">
                         <div class="table-responsive">
-                            <a type="button" rel="tooltip" class="btn btn-info btn-sm" data-original-title="" title="" href="add-category.php">
+                            <a type="button" rel="tooltip" class="btn btn-info btn-sm" data-original-title="" title="" href="crud/add-act-category.php">
                                 <i class="">Pievienot Kategoriju</i>
                             </a>
                             <?php
@@ -311,7 +311,7 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">#</th>
-                                    <th class="text-center">Nosaukums</th>
+                                    <th class="text-left">Nosaukums</th>
                                     <th class="text-right">Opcijas</th>
                                 </tr>
                             </thead>
@@ -324,10 +324,10 @@
                                     <td class="text-center"><input class="form-check-input" type="checkbox" value=""><?php echo $row["id_category"]; ?></td>
                                     <td><?php echo $row["cname"]; ?></td>
                                     <td class="td-actions text-right">
-                                        <a href="edit-activities.php?id=<?php echo $row["id_category"] ?>" type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" data-original-title="" title="">
+                                        <a href="crud/edit-act-category.php?id=<?php echo $row["id_category"] ?>" type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" data-original-title="" title="">
                                             <i class="material-icons">edit</i>
                                         </a>
-                                        <a href="delete-activities.php?id=<?php echo $row["id_category"] ?>" type="button" rel="tooltip" name="deleteBlog" class="btn btn-danger btn-just-icon btn-sm" data-original-title="" title="">
+                                        <a href="crud/delete-act-category.php?id=<?php echo $row["id_category"] ?>" type="button" rel="tooltip" name="deleteBlog" class="btn btn-danger btn-just-icon btn-sm" data-original-title="" title="">
                                             <i class="material-icons" >delete</i>
                                         </a>
                                     </td>

@@ -7,7 +7,18 @@ CREATE TABLE users(
 	psw VARCHAR(25) NOT NULL,
 	email VARCHAR(100) NOT NULL);
 
--- Tabula: Activities		        Veids: PAMATTABULA
+
+-- Tabula: Category		        Veids: PAMATTABULA
+CREATE TABLE act_category(
+	id_category INT AUTO_INCREMENT PRIMARY KEY,
+	cname VARCHAR(40) NOT NULL);
+
+-- Tabula: Category		        Veids: PAMATTABULA
+CREATE TABLE blg_category(
+	id_category INT AUTO_INCREMENT PRIMARY KEY,
+	cname VARCHAR(40) NOT NULL);
+
+	-- Tabula: Activities		        Veids: ATVASINĀTA TABULA
 CREATE TABLE activities(
 	id_activities INT AUTO_INCREMENT PRIMARY KEY,
 	aname VARCHAR(40) NOT NULL,
@@ -16,12 +27,7 @@ CREATE TABLE activities(
 	content VARCHAR(200) NOT NULL,
 	category_id INT,
 	picture BLOB,
-	FOREIGN KEY (category_id) REFERENCES categories(id_category) ON UPDATE CASCADE ON DELETE CASCADE);
-
--- Tabula: Category		        Veids: PAMATTABULA
-CREATE TABLE categories(
-	id_category INT AUTO_INCREMENT PRIMARY KEY,
-	cname VARCHAR(40) NOT NULL);
+	FOREIGN KEY (category_id) REFERENCES act_category(id_category) ON UPDATE CASCADE ON DELETE CASCADE);
 
 -- Tabula: Blog		            Veids: ATVASINĀTĀ TABULA (NO PAMATTABULAS)
 CREATE TABLE blogs(
@@ -33,17 +39,10 @@ CREATE TABLE blogs(
 	full_name VARCHAR(50),
 	posted_by INT,
 	category_id INT,
-	FOREIGN KEY (category_id) REFERENCES categories(id_category) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (category_id) REFERENCES blg_category(id_category) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (posted_by) REFERENCES users(id_user) ON UPDATE CASCADE ON DELETE CASCADE);
 
-INSERT INTO users(fname, lname, username, psw, email)
-VALUES ('First_Name', 'Last_Name', 'admin', 'Pass213', 'admin@kolka.lv');
 
-INSERT INTO blogs(title, content, full_name, posted_by)
-VALUES ('Title', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.', 'Name Who Posted', '1');
-
-INSERT INTO categories(cname)
-VALUES ('Category name');
 
 
 
