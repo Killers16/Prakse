@@ -3,8 +3,8 @@
 require_once "../../database_config.php";
  
 // Define variables and initialize with empty values
-$title = $content = $picture = $blog_author = "";
-$title_err = $content_err = $picture_err = $blog_author_err = "";
+$title = $content = $picture = $blog_author = $category = "";
+$title_err = $content_err = $picture_err = $blog_author_err = $category_id_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -22,6 +22,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $content_err = "Ievadiet tekstu.";     
     } else{
         $content = $input_content;
+    }
+    // Validate category
+    $input_category = trim($_POST["category_id"]);
+    if(empty($input_category)){
+        $category_id_err = "Atlasiet kategoriju.";     
+    } else{            
+        $category_id = $input_category;
     }
     
     // Validate picture
@@ -43,19 +50,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     // Check input errors before inserting in database
-    if(empty($title_err) && empty($content_err) && empty($picture_err) && empty($blog_author_err)){
+    if(empty($title_err) && empty($content_err) && empty($picture_err) && empty($blog_author_err) && empty($category_id_err)){
         // Prepare an insert statement
-        $sql = "INSERT INTO blogs (title, content, picture, blog_author) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO blogs (title, content, picture, blog_author, category_id) VALUES (?, ?, ?, ?, ?)";
          
         if($stmt = mysqli_prepare($conn, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ssss", $param_title, $param_content, $param_picture, $param_blog_author);
+            mysqli_stmt_bind_param($stmt, "sssss", $param_title, $param_content, $param_picture, $param_blog_author, $param_category_id);
             
             // Set parameters
             $param_title = $title;
             $param_content = $content;
             $param_picture = $picture;
             $param_blog_author = $blog_author;
+            $param_category_id = $category_id;
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
@@ -122,7 +130,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <label for="author">Raksta autors:</label><br>
   <input type="text" id="author" name="blog_author" value="<?php echo $blog_author; ?>"><br><br>
 
+  <label for="category">Kategorija:</label><br>
 
+  <select name="category_id" id="category_id">
+  <?php
+	$result2 = $conn->query("SELECT * FROM blg_category");
+	if (mysqli_num_rows($result2) > 0) {
+	$i=0;
+	while($row = mysqli_fetch_array($result2)) {
+    ?>
+  <option value="<?php echo $row["id_category"]; ?>"><?php echo $row["cname"]; ?></option>
+  <?php
+        $i++;
+		}
+        $row["id_category"] = $row["category_id"];
+	}
+	else{
+	echo "No result found";
+}
+?>
+</select><br><br>
+
+  <label for="picture">Attēls:</label><br>
   <input type="file" name="picture" value="<?php echo $picture; ?>"><br><br>
 
   <input type="submit" name="newParagraph" value="Pievienot">

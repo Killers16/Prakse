@@ -3,8 +3,8 @@
 require_once "../../database_config.php";
  
 // Define variables and initialize with empty values
-$aname = $opened_at = $closed_at = $content = $picture = "";
-$aname_err = $opened_at_err = $closed_at_err = $content_err = $picture_err ="";
+$aname = $opened_at = $closed_at = $content = $picture = $category_id = "";
+$aname_err = $opened_at_err = $closed_at_err = $content_err = $picture_err = $category_id_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -37,6 +37,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $content = $input_content;
     }
     
+    // Validate category
+    $input_category = trim($_POST["category_id"]);
+    if(empty($input_category)){
+        $category_id_err = "Atlasiet kategoriju.";     
+    } else{            
+        $category_id = $input_category;
+    }
+
     // Validate picture
     if (isset($_POST['newActivitie'])) {
     if (getimagesize($_FILES['picture']['tmp_name']) == false) {
@@ -47,13 +55,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $picture = base64_encode(file_get_contents(addslashes($file)));}}
     
     // Check input errors before inserting in database
-    if(empty($aname_err) && empty($opened_at_err) && empty($closed_at_err) && empty($content_err) && empty($picture_err)){
+    if(empty($aname_err) && empty($opened_at_err) && empty($closed_at_err) && empty($content_err) && empty($picture_err) && empty($category_id_err)){
         // Prepare an insert statement
-        $sql = "INSERT INTO activities (aname, opened_at, closed_at, content, picture) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO activities (aname, opened_at, closed_at, content, picture, category_id) VALUES (?, ?, ?, ?, ?, ?)";
          
         if($stmt = mysqli_prepare($conn, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssss", $param_aname, $param_opened_at, $param_closed_at, $param_content, $param_picture);
+            mysqli_stmt_bind_param($stmt, "ssssss", $param_aname, $param_opened_at, $param_closed_at, $param_content, $param_picture, $param_category_id);
             
             // Set parameters
             $param_aname = $aname;
@@ -61,6 +69,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_closed_at = $closed_at;
             $param_content = $content;
             $param_picture = $picture;
+            $param_category_id = $category_id;
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Records created successfully. Redirect to landing page
@@ -126,6 +135,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   <label for="content">Apraksts:</label><br>
   <textarea name="content" style="resize: none;" rows="5" cols="30" value="<?php echo $content; ?>">
 </textarea>
+
+<label for="category">Kategorija:</label><br>
+
+<select name="category_id" id="category_id">
+<?php
+  $result2 = $conn->query("SELECT * FROM act_category");
+  if (mysqli_num_rows($result2) > 0) {
+  $i=0;
+  while($row = mysqli_fetch_array($result2)) {
+  ?>
+<option value="<?php echo $row["id_category"]; ?>"><?php echo $row["cname"]; ?></option>
+<?php
+      $i++;
+      }
+      $row["id_category"] = $row["category_id"];
+  }
+  else{
+  echo "No result found";
+}
+?>
+</select><br><br>
 
   <input type="file" name="picture" value="<?php echo $picture; ?>"><br><br>
 
