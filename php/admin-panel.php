@@ -103,7 +103,7 @@
                                 <i class="">Pievienot Paragrāfu</i>
                             </a>
                             <?php
-                                $result = mysqli_query($conn,"SELECT * FROM blogs");
+                                $result = mysqli_query($conn,"SELECT * FROM blogs INNER JOIN blg_category ON blogs.category_id = blg_category.id_category ORDER BY id_blogs ASC");
                             ?>
                             <?php
                                 if (mysqli_num_rows($result) > 0) {
@@ -115,6 +115,7 @@
                                     <th class="text-center">Virsraksts</th>
                                     <th class="text-center">Paragrāfs</th>
                                     <th class="text-center">Raksta autors</th>
+                                    <th class="text-center">Kategorija</th>
                                     <th class="text-center">Attēls</th>
                                     <th class="text-center">Publicēšanas laiks</th>
                                     <th class="text-right">Opcijas</th>
@@ -130,6 +131,7 @@
                                     <td><?php echo $row["title"]; ?></td>
                                     <td><p class="line-limit"><?php echo $row["content"]; ?></p></td>
                                     <td><p class="text-center"><?php echo $row["blog_author"]; ?></p></td>
+                                    <td><p class="text-center"><?php echo $row["cname"]; ?></p></td>
                                     <td class="text-center"><?php echo '<img height="100px" width="100px" src="data:image/png;base64,' . $row['picture'] . '" />'; ?></td>
                                     <td class="text-center"><?php echo $row["created_at"]; ?></td>
                                     <td class="td-actions text-right">
@@ -172,7 +174,7 @@
                                 <i class="">Pievienot Aktivitāti</i>
                             </a>
                             <?php
-                                $result = mysqli_query($conn,"SELECT * FROM activities");
+                                $result = mysqli_query($conn,"SELECT * FROM activities INNER JOIN act_category ON activities.category_id = act_category.id_category ORDER BY id_activities ASC");
                             ?>
                             <?php
                                 if (mysqli_num_rows($result) > 0) {
@@ -202,7 +204,7 @@
                                     <td><p class="text-center"><?php echo $row["closed_at"]; ?></p></td>
                                     <td><p class="line-limit"><?php echo $row["content"]; ?></p></td>
                                     <td class="text-center"><?php echo '<img height="100px" width="100px" src="data:image/png;base64,' . $row['picture'] . '" />'; ?></td>
-                                    <td><p class="text-center"><?php echo $row["category_id"]; ?></p></td>
+                                    <td><p class="text-center"><?php echo $row["cname"]; ?></p></td>
                                     <td class="td-actions text-right">
                                         <a href="crud/edit-activitie.php?id=<?php echo $row["id_activities"] ?>" type="button" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" data-original-title="" title="">
                                             <i class="material-icons">edit</i>

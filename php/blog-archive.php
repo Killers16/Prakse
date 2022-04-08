@@ -85,7 +85,28 @@
 
 													</div>
 													<?php
-                               						 $result = mysqli_query($conn,"SELECT * FROM blogs");
+												if (isset($_GET['page_no']) && $_GET['page_no']!="") {
+												$page_no = $_GET['page_no'];
+												} else {
+													$page_no = 1;
+													}
+
+													$total_records_per_page = 9;
+													$offset = ($page_no-1) * $total_records_per_page;
+													$previous_page = $page_no - 1;
+													$next_page = $page_no + 1;
+													$adjacents = "2";
+
+													$result_count = mysqli_query(
+														$conn,
+														"SELECT COUNT(*) As total_records FROM `blogs`"
+														);
+														$total_records = mysqli_fetch_array($result_count);
+														$total_records = $total_records['total_records'];
+														$total_no_of_pages = ceil($total_records / $total_records_per_page);
+														$second_last = $total_no_of_pages - 1; // total pages minus 1
+													
+                               						 $result = mysqli_query($conn,"SELECT * FROM blogs INNER JOIN blg_category ON blogs.category_id = blg_category.id_category LIMIT $offset, $total_records_per_page");
                                 					 if (mysqli_num_rows($result) > 0) {
                             						?>
 												</header>
@@ -95,20 +116,20 @@
 												<div class="post-archive__list lsvr-grid lsvr-grid--sm-reset lsvr-grid--3-cols lsvr-grid--md-2-cols lsvr-grid--masonry">
 
 													<!-- LIST ITEM : begin -->
-													<div class="post-archive__item lsvr-grid__col">
-
-														<!-- POST : begin -->
-														<?php
+													<?php
                                							 $i=0;
                                							 while($row = mysqli_fetch_array($result)) {
                            								 ?>
+													<div class="post-archive__item lsvr-grid__col">
+
+														<!-- POST : begin -->
 														<article class="post post--has-thumbnail">
 															<div class="post__inner">
 
 																<!-- POST THUMBNAIL : begin -->
 																<p class="post__thumbnail post__thumbnail--cropped">
-																	<a href="blog-detail.html" class="post__thumbnail-link post__thumbnail-link--cropped" style="background-image: url( '../content/blog_01_th.jpg' );">
-																		<span class="screen-reader-text">Building materials have been improved too</span>
+																	<a href="blog-detail.html" class="post__thumbnail-link post__thumbnail-link--cropped" style="background-image: url( '<?php echo 'data:image/png;base64,' . $row["picture"] . ''; ?>' );">
+																		<span class="screen-reader-text"><?php echo $row["title"] ?></span>
 																	</a>
 																</p>
 																<!-- POST THUMBNAIL : end -->
@@ -122,7 +143,7 @@
 																		<!-- POST CATEGORIES : begin -->
 																		<p class="post__categories" title="Category">
 																			<span class="post__terms post__terms--category">
-																				<a href="blog-archive.html" class="post__term-link">Architecture</a>
+																				<a href="blog-archive.html" class="post__term-link"><?php echo $row["cname"] ?></a>
 																			</span>
 																		</p>
 																		<!-- POST CATEGORIES : end -->
@@ -142,7 +163,7 @@
 
 																			<!-- POST AUTHOR : begin -->
 																			<li class="post-meta__item post__meta-item--author">
-																				<a href="author-archive.html" class="post-meta__item-link" rel="author">Adrien Huel</a>
+																				<a href="author-archive.html" class="post-meta__item-link" rel="author"><?php echo $row["blog_author"]; ?></a>
 																			</li>
 																			<!-- POST AUTHOR : end -->
 
@@ -154,8 +175,8 @@
 
 																	<!-- POST PERMALINK : begin -->
 																	<p class="post-permalink">
-																		<a href="blog-detail.html" class="post-permalink__link" rel="bookmark">
-																			<span class="post-permalink__link-label">Continue reading</span>
+																		<a href="blog-detail.php?id=<?php echo $row["id_blogs"] ?>" class="post-permalink__link" rel="bookmark">
+																			<span class="post-permalink__link-label">Turpināt lasīt</span>
 																			<span class="post-permalink__link-icon" aria-hidden="true"></span>
 																		</a>
 																	</p>
@@ -166,7 +187,8 @@
 
 															</div>
 														</article>
-														<?php
+						</div>
+						<?php
                                							 $i++;} ?>
 <?php
                             }
@@ -174,7 +196,6 @@
                             echo "No result found";
                             }
                         ?>
-						</div>
 													</div>
 													<!-- LIST ITEM : end -->
 
@@ -183,36 +204,82 @@
 
 												<!-- PAGINATION : begin -->
 												<nav class="post-pagination">
-
 													<h6 class="screen-reader-text">Posts navigation</h6>
 													<ul class="post-pagination__list">
-
-														<li class="post-pagination__item post-pagination__item--prev">
-															<a href="blog-archive.html" class="post-pagination__item-link">Previous</a>
+													 	
+														<li class=" post-pagination__item post-pagination__item--prev">
+															<a  <?php if($page_no > 1){
+															echo "href='?page_no=$previous_page'";
+															} ?> class="post-pagination__item-link">Previous</a>
 														</li>
 
-														<li class="post-pagination__item post-pagination__item--number post-pagination__item--first-number">
-															<a href="blog-archive.html" class="post-pagination__item-link">1</a>
+														<?php
+															if ($total_no_of_pages <= 10){  	 
+															for ($counter = 1; $counter <= $total_no_of_pages; $counter++){
+															if ($counter == $page_no) {
+															echo "<li class='post-pagination__item post-pagination__item--number post-pagination__item--active'><a class='post-pagination__item-link'>$counter</a></li>";	
+																	}else{
+																echo "<li class='post-pagination__item post-pagination__item--number'><a href='?page_no=$counter' class='post-pagination__item-link'>$counter</a></li>";
+																		}
+																}
+														}
+														elseif ($total_no_of_pages > 10){
+															if($page_no <= 4) {			
+																for ($counter = 1; $counter < 8; $counter++){		 
+																   if ($counter == $page_no) {
+																	echo "<li class='post-pagination__item post-pagination__item--number post-pagination__item--active'><a class='post-pagination__item-link'>$counter</a></li>";		
+																	   }else{
+																		echo "<li class='post-pagination__item post-pagination__item--number'><a href='?page_no=$counter' class='post-pagination__item-link'>$counter</a></li>";
+																			   }
+															   }
+															   echo "<li class='post-pagination__item post-pagination__item--number'><a class='post-pagination__item-link'>...</a></li>";
+															   echo "<li class='post-pagination__item post-pagination__item--number'><a href='?page_no=$second_last' class='post-pagination__item-link'>$second_last</a></li>";
+															   echo "<li class='post-pagination__item post-pagination__item--number'><a href='?page_no=$total_no_of_pages' class='post-pagination__item-link'>$total_no_of_pages</a></li>";
+															   }
+															elseif($page_no > 4 && $page_no < $total_no_of_pages - 4) {		 
+																echo "<li class='post-pagination__item post-pagination__item--number'><a href='?page_no=1' class='post-pagination__item-link'>1</a></li>";
+															   echo "<li class='post-pagination__item post-pagination__item--number'><a href='?page_no=2' class='post-pagination__item-link'>2</a></li>";
+															   echo "<li class='post-pagination__item post-pagination__item--number'><a class='post-pagination__item-link'>...</a></li>";
+																for (
+																	 $counter = $page_no - $adjacents;
+																	 $counter <= $page_no + $adjacents;
+																	 $counter++
+																	 ) {		
+																	 if ($counter == $page_no) {
+																		echo "<li class='post-pagination__item post-pagination__item--number post-pagination__item--active'><a class='post-pagination__item-link'>$counter</a></li>";		
+																	}else{
+																	 echo "<li class='post-pagination__item post-pagination__item--number'><a href='?page_no=$counter' class='post-pagination__item-link'>$counter</a></li>";
+																			}               
+																	   }
+																	   echo "<li class='post-pagination__item post-pagination__item--number'><a class='post-pagination__item-link'>...</a></li>";
+																echo "<li class='post-pagination__item post-pagination__item--number'><a href='?page_no=$second_last' class='post-pagination__item-link'>$second_last</a></li>";
+																echo "<li class='post-pagination__item post-pagination__item--number'><a href='?page_no=$total_no_of_pages' class='post-pagination__item-link'>$total_no_of_pages</a></li>";
+																}
+																else {
+																	echo "<li class='post-pagination__item post-pagination__item--number'><a href='?page_no=1' class='post-pagination__item-link'>1</a></li>";
+															   echo "<li class='post-pagination__item post-pagination__item--number'><a href='?page_no=2' class='post-pagination__item-link'>2</a></li>";
+															   echo "<li class='post-pagination__item post-pagination__item--number'><a class='post-pagination__item-link'>...</a></li>";
+																	for (
+																		 $counter = $total_no_of_pages - 6;
+																		 $counter <= $total_no_of_pages;
+																		 $counter++
+																		 ) {
+																		 if ($counter == $page_no) {
+																			echo "<li class='post-pagination__item post-pagination__item--number post-pagination__item--active'><a class='post-pagination__item-link'>$counter</a></li>";		
+																		}else{
+																		 echo "<li class='post-pagination__item post-pagination__item--number'><a href='?page_no=$counter' class='post-pagination__item-link'>$counter</a></li>";
+																				}                    
+																		 }
+																		}
+																	}
+														?>
+														
+														<li class=" post-pagination__item post-pagination__item--next">
+															<a <?php if($page_no < $total_no_of_pages) {
+															echo "href='?page_no=$next_page'";
+															} ?> class="post-pagination__item-link">Next</a>
 														</li>
-
-														<li class="post-pagination__item post-pagination__item--number post-pagination__item--active">
-															<a href="blog-archive.html" class="post-pagination__item-link">2</a>
-														</li>
-
-														<li class="post-pagination__item post-pagination__item--number">
-															<a href="blog-archive.html" class="post-pagination__item-link">3</a>
-														</li>
-
-														<li class="post-pagination__item post-pagination__item--dots">&hellip;</li>
-
-														<li class="post-pagination__item post-pagination__item--number post-pagination__item--last-number">
-															<a href="blog-archive.html" class="post-pagination__item-link">8</a>
-														</li>
-
-														<li class="post-pagination__item post-pagination__item--next">
-															<a href="blog-archive.html" class="post-pagination__item-link">Next</a>
-														</li>
-
+													
 													</ul>
 
 												</nav>
