@@ -735,7 +735,7 @@
 																			<div class="lsvr-wordbench-contact__form-wrapper">
 
 																				<!-- FORM : begin -->
-																				<form class="lsvr-form lsvr-form--contact lsvr-form--ajax" action="php/contact-form.php" method="post">
+																				<form class="lsvr-form lsvr-form--contact lsvr-form--ajax" action="php/phpmailer/sendemail.php" method="post">
 																					<input type="hidden" name="contact-form" value="true">
 																					<input class="lsvr-form__field-input-email" type="text" name="form-email"><!-- This is a honeypot field, please remove this comment -->
 
@@ -769,7 +769,7 @@
 																				            <p class="lsvr-form__field">
 																				                <label class="lsvr-form__field-label" for="contact-name">Vārds*</label>
 																				                <input class="lsvr-form__field-input lsvr-form__field-input--text lsvr-form__field-input--required"
-																				                	type="text" name="contact-name" id="contact-name">
+																				                	type="text" name="name" id="contact-name">
 																				            </p>
 
 																				        </div>
@@ -781,7 +781,7 @@
 																				            <p class="lsvr-form__field">
 																				                <label class="lsvr-form__field-label" for="contact-email">E-pasts*</label>
 																				                <input class="lsvr-form__field-input lsvr-form__field-input--text lsvr-form__field-input--email lsvr-form__field-input--required"
-																				                	type="text" name="contact-email" id="contact-email">
+																				                	type="email" name="email" id="contact-email">
 																				            </p>
 
 																				        </div>
@@ -793,17 +793,7 @@
 																					<!-- GRID : begin -->
 																					<div class="lsvr-grid lsvr-grid--2-cols lsvr-grid--sm-1-cols">
 
-																						<!-- GRID COL : begin -->
-																						<div class="lsvr-grid__col">
-
-																				            <p class="lsvr-form__field">
-																				                <label class="lsvr-form__field-label" for="contact-phone">Jūsu talruņa numurs</label>
-																				                <input class="lsvr-form__field-input lsvr-form__field-input--text"
-																				                	type="text" name="contact-phone" id="contact-phone">
-																				            </p>
-
-																				        </div>
-																				        <!-- GRID COL : end -->
+																						
 
 																						<!-- GRID COL : begin -->
 																						<div class="lsvr-grid__col">
@@ -811,7 +801,7 @@
 																				            <p class="lsvr-form__field">
 																				                <label class="lsvr-form__field-label" for="contact-subject">Temats</label>
 																				                <input class="lsvr-form__field-input lsvr-form__field-input--text"
-																				                	type="text" name="contact-subject" id="contact-subject">
+																				                	type="text" name="subject" id="contact-subject">
 																				            </p>
 
 																				        </div>
@@ -824,13 +814,13 @@
 																		            <p class="lsvr-form__field">
 																		                <label class="lsvr-form__field-label" for="contact-message">Ziņojums*</label>
 																		                <textarea class="lsvr-form__field-input lsvr-form__field-input--textarea lsvr-form__field-input--required"
-																		                	name="contact-message" id="contact-message" cols="40" rows="10"></textarea>
+																		                	name="message" id="contact-message" cols="40" rows="10"></textarea>
 																		            </p>
 																		            <!-- FORM MESSAGE : end -->
 
 																			        <!-- FORM SUBMIT : begin -->
 																			        <p>
-																			        	<button class="lsvr-button lsvr-form__submit" type="submit" data-loading-label="Sending...">Iesniegt</button>
+																			        	<button class="lsvr-button lsvr-form__submit" type="submit" name = "submit" data-loading-label="Sending...">Iesniegt</button>
 																			        </p>
 																			        <!-- FORM SUBMIT : end -->
 
