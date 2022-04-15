@@ -183,7 +183,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
   <input type="text" name="closed_at" value="<?php echo $closed_at; ?>"><br><br>
 
   <label for="content">Apraksts:</label><br>
-  <textarea name="content" style="resize: none;" rows="5" cols="30" value="<?php echo $content; ?>"></textarea>
+  <textarea name="content" style="resize: none;" rows="5" cols="30"><?php echo $content; ?></textarea>
 
   <input type="file" name="picture" value="<?php echo $picture; ?>"><br><br>
   <input type="hidden" name="id" value="<?php echo $id; ?>"/>
