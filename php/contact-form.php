@@ -7,10 +7,10 @@
 ----------------------------------------------------------------------------- */
 
 // Email where the contact form messages will be sent
-$email_to = 'example@example.com';
+$email_to = 'artjomsluk@gmail.com';
 
 // Email which will be set as the sender, it usually has to be from the same domain as website
-$email_from = 'example@example.com';
+$email_from = 'artjomsluk@gmail.com';
 
 // Default email subject (if the sender leaves subject field blank)
 $default_email_subject = 'Contact form message';
@@ -47,11 +47,7 @@ $form_fields = array(
         'required' => true,
         'validation_message' => 'The email address you entered does not appear to be valid.',
     ),
-    'contact-phone' => array(
-        'label' => 'Phone',
-        'type' => 'text',
-        'required' => false,
-    ),
+    
     'contact-subject' => array(
         'label' => 'Subject',
         'type' => 'text',
