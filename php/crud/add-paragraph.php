@@ -3,7 +3,7 @@
 require_once "../../database_config.php";
  
 // Define variables and initialize with empty values
-$title = $content = $picture = $blog_author = $category = "";
+$title = $content = $picture = $blog_author = $category_id = "";
 $title_err = $content_err = $picture_err = $blog_author_err = $category_id_err = "";
  
 // Processing form data when form is submitted
