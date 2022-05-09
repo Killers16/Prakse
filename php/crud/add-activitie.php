@@ -109,20 +109,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     mysqli_close($conn);
 }
 ?>
-<?php 
-$colname_rs_mondayshrs = "-1"; 
-if (isset($_GET['restaurantid'])) { 
-  $colname_rs_mondayshrs = $_GET['restaurantid']; 
-} 
-mysqli_select_db( $restaurant, $database_restaurant); 
-$query_rs_mondayshrs = sprintf("SELECT * FROM opening_hours WHERE activities_id = %s 
-AND DoW='Monday'", GetSQLValueString($colname_rs_mondayshrs, "INT")); 
-$rs_mondayshrs = mysqli_query( $restaurant, $query_rs_mondayshrs) or 
-die(mysqli_error($GLOBALS["___mysqli_ston"])); 
-$row_rs_mondayshrs = mysqli_fetch_assoc($rs_mondayshrs); 
-$totalRows_rs_mondayshrs = mysqli_num_rows($rs_mondayshrs);    
 
-?> 
 
 <!DOCTYPE html>
 <html lang="en-US">
@@ -163,20 +150,6 @@ $totalRows_rs_mondayshrs = mysqli_num_rows($rs_mondayshrs);
 <!--  Name -->
   <label for="title">Nosaukums:</label><br>
   <input type="text" id="aname" name="aname" value="<?php echo $aname; ?>"><br><br>
-  <label for="opened_at">Darba laiks:</label><br>
-  <!--  Monday -->
-  <div style="display:flex;
-flex-direction:row;">
-  <select id="mondaystatus" onChange="update_mondaystatus()">
-                      <option selected value="" <?php if (!(strcmp("", 
-$row_rs_mondayshrs['status']))) {echo "selected=\"selected\"";} ?>>Open or Closed? 
-</option>
-                      <option value="Open" <?php if (!(strcmp("Open", 
-$row_rs_mondayshrs['status']))) {echo "selected=\"selected\"";} ?>>Open</option>
-                      <option value="Closed" <?php if (!(strcmp("Closed", 
-$row_rs_mondayshrs['status']))) {echo "selected=\"selected\"";} ?>>Closed</option>
-                    </select>
-</div><br>
 
 <!--  Content -->
   <label for="content">Apraksts:</label><br>

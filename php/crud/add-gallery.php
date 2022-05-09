@@ -30,15 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{            
         $category_id = $input_category;
     }
-    
-    // Validate picture
-    if (isset($_POST['newGallery'])) {
-    if (getimagesize($_FILES['picture']['tmp_name']) == false) {
-        $picture_err = "<br />Please Select An Image.";
-        } else {  
-        //declare variables
-        $file = $_FILES['picture']['tmp_name'];
-        $picture = base64_encode(file_get_contents(addslashes($file)));}}
+
 
 
     // Validate author
@@ -65,6 +57,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_category_id = $category_id;
             
             // Attempt to execute the prepared statement
+             // Validate picture
+    foreach ($_FILES['picture']['tmp_name'] as $filename) {
+        $picture = base64_encode(file_get_contents(addslashes($filename)));
+
             if(mysqli_stmt_execute($stmt)){
                 $sql2 = "INSERT INTO img_gal (gal_id, picture) VALUES (LAST_INSERT_ID(), ?)";
          
@@ -75,7 +71,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Set parameters
 
             $param_picture = $picture;
-            
+        
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Records created successfully. Redirect to landing page
@@ -83,10 +79,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 exit();
             }
         }
+    
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
         }
+    }
         // Close statement
         mysqli_stmt_close($stmt);
     }
@@ -164,7 +162,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </select><br><br>
 
   <label for="picture">Attēls:</label><br>
-  <input type="file" name="picture" value="<?php echo $picture; ?>"><br><br>
+  <input type="file" name="picture[]" multiple value="<?php echo $picture; ?>"><br><br>
 
   <input type="submit" name="newGallery" value="Pievienot">
 
